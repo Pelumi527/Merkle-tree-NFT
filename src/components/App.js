@@ -125,7 +125,8 @@ function App() {
 			sortPairs: true,
 		})
 
-		const leaf = ethers.utils.solidityKeccak256(["address"],[account])
+		const leaf = ethers.utils.solidityKeccak256(["address"],['account'])
+		console.log(account)
 		const proof = tree.getHexProof(leaf)
 		
 
