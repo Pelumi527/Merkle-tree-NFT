@@ -44,40 +44,44 @@ function App() {
 
 	const loadBlockchainData = async () => {
 		// Fetch Contract, Data, etc.
-		if (web3) {
-
+		 if (web3) {
 
 			const networkId = await web3.eth.net.getId()
 			setCurrentNetwork(networkId)
-			
 
 			if(networkId !== 4) {
-				setIsError(true)
 				setMessage("Contract not deployed to current network, please change to the rinkeby network in MetaMask")
 			}
-
+			
 			try {
+			
 				const THEONFT = new web3.eth.Contract(TheoNFT.abi, '0x416195c2A9Fcb4A3991C0A5Bfde2acCd96D127A1')
 				setNftContract(THEONFT)
-
+	
 				const mintprice= await nftContract.methods.price().call()
-				
+					
 				setPrice(mintprice)
-
+	
 				const totalMinted = await nftContract.methods.totalMinted().call()
 				const maxSupply = await nftContract.methods.maxSupply().call()
 				setSupplyAvailable(maxSupply - totalMinted)
+				console.log(supplyAvailable, "max")
+	
+				const presale = await nftContract.methods.presale().call()
+				console.log(presale, "presale")
+				setIsPresale(presale);
+	
 				if (networkId !== 5777) {
 					setBlockchainExplorerURL(CONFIG.NETWORKS[networkId].blockchainExplorerURL)
 					setOpenseaURL(CONFIG.NETWORKS[networkId].openseaURL)
 				}
 				
 			} catch (error) {
-				
+				setIsError(true)
 			}
-
-		}
+		 }
 	}
+
 
 	const loadWeb3 = async () => {
 		if (typeof window.ethereum !== 'undefined' && !account) {
@@ -106,6 +110,8 @@ function App() {
 		}
 	}
 
+	
+
 	// MetaMask Login/Connect
 	const web3Handler = async () => {
 		if (web3) {
@@ -125,8 +131,8 @@ function App() {
 			sortPairs: true,
 		})
 
-		const leaf = ethers.utils.solidityKeccak256(["address"],['account'])
-		console.log(account)
+		const leaf = ethers.utils.solidityKeccak256(["address"],[account])
+	console.log(String(account), "acc")	
 		const proof = tree.getHexProof(leaf)
 		
 
@@ -144,14 +150,12 @@ function App() {
 
 		// Mint NFT
 		if (nftContract) {
-			
 			setIsMinting(true)
 			setIsError(false)
 
-			const presale = await nftContract.methods.presale.call()
-			setIsPresale(presale);
+			
 
-			console.log(isPresale);
+			console.log(isPresale, "other");
 			if(isPresale == true){
 				verify(account)
 			}
@@ -160,7 +164,7 @@ function App() {
 			
 			let totalweiCost = String(isprice * mintAmount)
 
-			console.log(totalweiCost,"opruce")
+			
 			await nftContract.methods.mint(mintAmount).send({ from: account, value: totalweiCost})
 				.on('confirmation', async () => {
 					const totalMinted = await nftContract.methods.totalMinted().call()
@@ -214,8 +218,8 @@ function App() {
 				<Row className="my-4">
 					<Col className="panel grid" sm={12} md={6}>
 						<input type="number" placeholder="MintAmount" onChange={handleMintAmount}></input>
-						{isMinting == true ? (<button onClick={mintNFTHandler} className="button mint-button"><span>Minting</span></button>)
-						:<button onClick={mintNFTHandler} className="button mint-button"><span>Mint</span></button> }
+						
+						<button onClick={mintNFTHandler} className="button mint-button"><span>Mint</span></button>
 						
 					</Col>
 					<Col className="panel grid image-showcase mx-4">
@@ -256,9 +260,10 @@ function App() {
 								<p>Current Network: {CONFIG.NETWORKS[currentNetwork].name}</p>
 							)}
 
-							<p>{`NFT's Left: ${supplyAvailable}`}</p>
+							
 						</div>
 					)}
+					<p>{`NFT's Left: ${supplyAvailable}`}</p>
 				</Row>
 			</main>
 		</div>
