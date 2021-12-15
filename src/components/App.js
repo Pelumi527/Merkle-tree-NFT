@@ -181,8 +181,11 @@ function App() {
 
 	useEffect(() => {
 		loadWeb3()
-		loadBlockchainData()
 	}, [account]);
+
+	useEffect(() => {
+		loadBlockchainData()
+	},);
 
 	return (
 		<div>
