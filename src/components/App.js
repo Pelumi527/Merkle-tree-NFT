@@ -132,7 +132,7 @@ function App() {
 		})
 
 		const leaf = ethers.utils.solidityKeccak256(["address"],[account])
-	console.log(String(account), "acc")	
+	console.log(account.toString(), "acc")	
 		const proof = tree.getHexProof(leaf)
 		
 
@@ -185,7 +185,7 @@ function App() {
 
 	useEffect(() => {
 		loadBlockchainData()
-	},);
+	},[loadBlockchainData]);
 
 	return (
 		<div>
