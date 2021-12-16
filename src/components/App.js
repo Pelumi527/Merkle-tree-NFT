@@ -65,10 +65,10 @@ function App() {
 				const totalMinted = await nftContract.methods.totalMinted().call()
 				const maxSupply = await nftContract.methods.maxSupply().call()
 				setSupplyAvailable(maxSupply - totalMinted)
-				console.log(supplyAvailable, "max")
+				
 	
 				const presale = await nftContract.methods.presale().call()
-				console.log(presale, "presale")
+			
 				setIsPresale(presale);
 	
 				if (networkId !== 5777) {
@@ -120,6 +120,7 @@ function App() {
 		}
 	}
 	const verify = async (account) => {
+		const res = maxAmount.find(item => item[0] == account)
 
 		const hashaddress = []
 		for(var i = 0; i < address.length; i++){
@@ -131,13 +132,15 @@ function App() {
 			sortPairs: true,
 		})
 
-		const leaf = ethers.utils.solidityKeccak256(["address"],[account])
-	console.log(account.toString(), "acc")	
+		console.log(res[0], "acct")
+
+		const leaf = ethers.utils.solidityKeccak256(["address"],[res[0]])
+	console.log(account, "acc")	
 		const proof = tree.getHexProof(leaf)
 		
 
 		
-		const res = maxAmount.find(item => item[0] == account)
+		
 		
 		const verified = await nftContract.methods.verification(proof,leaf,res[1])
 		if(verified == false){
@@ -185,7 +188,7 @@ function App() {
 
 	useEffect(() => {
 		loadBlockchainData()
-	},[loadBlockchainData]);
+	},[loadBlockchainData()]);
 
 	return (
 		<div>
