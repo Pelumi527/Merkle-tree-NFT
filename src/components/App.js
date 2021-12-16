@@ -132,10 +132,10 @@ function App() {
 			sortPairs: true,
 		})
 
-		console.log(res[0], "acct")
+		
 
 		const leaf = ethers.utils.solidityKeccak256(["address"],[res[0]])
-	console.log(account, "acc")	
+	
 		const proof = tree.getHexProof(leaf)
 		
 
@@ -149,7 +149,7 @@ function App() {
 		
 	}
 	const mintNFTHandler = async () => {
-		console.log(TheoNFT.abi)
+		
 
 		// Mint NFT
 		if (nftContract) {
@@ -158,14 +158,18 @@ function App() {
 
 			
 
-			console.log(isPresale, "other");
+			
 			if(isPresale == true){
 				verify(account)
 			}
 
 			
-			
-			let totalweiCost = String(isprice * mintAmount)
+			let totalweiCost
+			if(isPresale == false){
+				 totalweiCost = String(isprice * mintAmount)
+			}else{
+				totalweiCost = String(isprice * 0)
+			}
 
 			
 			await nftContract.methods.mint(mintAmount).send({ from: account, value: totalweiCost})
@@ -188,7 +192,7 @@ function App() {
 
 	useEffect(() => {
 		loadBlockchainData()
-	},[loadBlockchainData()]);
+	},[loadBlockchainData]);
 
 	return (
 		<div>
