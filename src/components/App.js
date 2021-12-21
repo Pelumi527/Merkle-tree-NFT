@@ -143,10 +143,10 @@ function App() {
 			setIsMinting(true)
 			setIsError(false)
 
-		const status =	await nftContract.methods.isVerified(account).call({from:account})
+			const status =	await nftContract.methods.isVerified(account).call({from:account})
 
 			//console.log(isPresale,"status", status)
-			if(isPresale == true && status == false){
+			if(isPresale == true){
 				verify(account)
 			}
 			
