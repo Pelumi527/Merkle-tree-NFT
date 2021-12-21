@@ -122,12 +122,12 @@ function App() {
 		}
 	}
 	const verify = async (account) => {
-		console.log(account)
+		//console.log(account)
 		let ans = addresses.find(o => o.address == account)
-		console.log(ans)
-		console.log(ans.proof, ans.leaf, ans.max)
+		//console.log(ans)
+		//console.log(ans.proof, ans.leaf, ans.max)
 		const verified = await nftContract.methods.verification(ans.proof, ans.leaf, ans.max).send({from: account})
-	 	console.log(verified, "verified")
+	 	//console.log(verified, "verified")
 
 		if(verified == false){
 			window.alert("You are not eligible for presale")
@@ -145,7 +145,7 @@ function App() {
 
 		const status =	await nftContract.methods.isVerified(account).call({from:account})
 
-			console.log(isPresale,"status", status)
+			//console.log(isPresale,"status", status)
 			if(isPresale == true && status == false){
 				verify(account)
 			}
