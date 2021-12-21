@@ -1,10 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
-import Countdown from 'react-countdown'
-import { address, maxAmount } from './address';
+import { addresses } from './address';
 import { ethers } from 'ethers';
-import {MerkleTree} from 'merkletreejs';
-import {keccak256} from 'keccak256';
 import Web3 from 'web3'
 
 // Import Images + CSS
@@ -37,6 +35,7 @@ function App() {
 	const [message, setMessage] = useState(null)
 
 	const [isprice, setPrice] = useState(0);
+	const [Vstatus,setVstaus] = useState(false)
 
 	const handleMintAmount = (e) => {
 		setmintAmount(e.target.value)
@@ -55,7 +54,10 @@ function App() {
 			
 			try {
 			
-				const THEONFT = new web3.eth.Contract(TheoNFT.abi, '0x416195c2A9Fcb4A3991C0A5Bfde2acCd96D127A1')
+				//const THEONFT = new web3.eth.Contract(TheoNFT.abi, '0x416195c2A9Fcb4A3991C0A5Bfde2acCd96D127A1')\
+				//const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0xBDa31f5b1f0B136D430Eba96075B5a3C4ff40F51")
+				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0xd9c852A49d783d3fbd2ED66FFf0364C604b4BeAD")
+				
 				setNftContract(THEONFT)
 	
 				const mintprice= await nftContract.methods.price().call()
@@ -120,34 +122,19 @@ function App() {
 		}
 	}
 	const verify = async (account) => {
-		const res = maxAmount.find(item => item[0] == account)
+		console.log(account)
+		let ans = addresses.find(o => o.address == account)
+		console.log(ans)
+		console.log(ans.proof, ans.leaf, ans.max)
+		const verified = await nftContract.methods.verification(ans.proof, ans.leaf, ans.max).send({from: account})
+	 	console.log(verified, "verified")
 
-		const hashaddress = []
-		for(var i = 0; i < address.length; i++){
-			const leaves = ethers.utils.solidityKeccak256(["address"],[address[i]])
-			hashaddress.push(leaves)
-		}
-
-		const tree = new MerkleTree(hashaddress, keccak256, {
-			sortPairs: true,
-		})
-
-		
-
-		const leaf = ethers.utils.solidityKeccak256(["address"],[res[0]])
-	
-		const proof = tree.getHexProof(leaf)
-		
-
-		
-		
-		
-		const verified = await nftContract.methods.verification(proof,leaf,res[1])
 		if(verified == false){
 			window.alert("You are not eligible for presale")
 		}
 		
 	}
+	
 	const mintNFTHandler = async () => {
 		
 
@@ -156,18 +143,17 @@ function App() {
 			setIsMinting(true)
 			setIsError(false)
 
-			
+		const status =	await nftContract.methods.isVerified(account).call({from:account})
 
-			
-			if(isPresale == true){
+			console.log(isPresale,"status", status)
+			if(isPresale == true && status == false){
 				verify(account)
 			}
-
 			
 			let totalweiCost
-			if(isPresale == false){
+			if (isPresale == false){
 				 totalweiCost = String(isprice * mintAmount)
-			}else{
+			} else{
 				totalweiCost = String(isprice * 0)
 			}
 
