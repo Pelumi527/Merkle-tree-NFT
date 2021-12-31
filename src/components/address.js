@@ -813,7 +813,7 @@ export const addresses = [
             "0xd21fb1874b5a2bf6259c91ec1d98a0181750f57b13c99bb64e541a43ba6c148d",
             "0x0cf8ebe0b67bc9ad7d491573df77f8278944068e472bad3ee5e5562243ff8cba"
         ],
-        "max": "10"
+        "max": "9"
     },
     {
         "address": "0xc6c3a1ef063d7c87c8944780b044b2191d0de899",

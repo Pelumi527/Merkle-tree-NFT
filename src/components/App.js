@@ -1,26 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from 'react'
-import { Row, Col } from 'react-bootstrap'
+import { useState, useEffect } from 'react';
 import { addresses } from './address';
-import { ethers } from 'ethers';
 import Web3 from 'web3'
 
 // Import Images + CSS
 import logo from '../images/logo.png'
-import happyImage from '../images/happy.png'
-import excitedImage from '../images/excited.png'
-import sadImage from '../images/sad.png'
+import smallLogo from '../images/logo-small.png'
+import Fusion from '../images/OceanFusion1024.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
+
 
 // Import ABI + Config
 import TheoNFT from '../abis/TheoNFT.json';
 import CONFIG from '../config.json';
+import { Navbar,Container, Image, Row, Col, Alert } from 'react-bootstrap';
+import {BsYoutube, BsTwitter, BsInstagram, BsLinkedin, BsWhatsapp} from 'react-icons/bs'
+import {MDBAnimation} from 'mdbreact';
 
 function App() {
 	const [web3, setWeb3] = useState(null)
 	const [openEmoji, setOpenEmoji] = useState(null)
 	const [nftContract, setNftContract] = useState(null);
-	const [supplyAvailable, setSupplyAvailable] = useState(0)
+	const [totalSupply, setTotalSupply] = useState(0)
 	const [isPresale, setIsPresale] = useState(false);
 	const [mintAmount, setmintAmount] = useState(0);
 
@@ -35,7 +37,13 @@ function App() {
 	const [message, setMessage] = useState(null)
 
 	const [isprice, setPrice] = useState(0);
-	const [Vstatus,setVstaus] = useState(false)
+	const [presalePrice, setPresalePrice] = useState(0)
+	const [totalMinted,settotalMinted] = useState(0);
+	const [allowedToMint, isAllowedtoMint] = useState(0)
+	const [show, setShow] = useState(false);
+	const [mintprice, setMintPrice] = useState(0)
+	const [check, setcheck] = useState(false);
+
 
 	const handleMintAmount = (e) => {
 		setmintAmount(e.target.value)
@@ -54,30 +62,32 @@ function App() {
 			
 			try {
 			
-				//const THEONFT = new web3.eth.Contract(TheoNFT.abi, '0x416195c2A9Fcb4A3991C0A5Bfde2acCd96D127A1')\
-				//const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0xBDa31f5b1f0B136D430Eba96075B5a3C4ff40F51")
-				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0xd9c852A49d783d3fbd2ED66FFf0364C604b4BeAD")
-				
+				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0x02DCF53A5da78437b3d60A22F7D6d1133b150786")
 				setNftContract(THEONFT)
-	
-				const mintprice= await nftContract.methods.price().call()
-					
+				const mintprice= await nftContract.methods.price().call()	
 				setPrice(mintprice)
-	
 				const totalMinted = await nftContract.methods.totalMinted().call()
+				settotalMinted(totalMinted)
 				const maxSupply = await nftContract.methods.maxSupply().call()
-				setSupplyAvailable(maxSupply - totalMinted)
-				
-	
+				setTotalSupply(maxSupply)
 				const presale = await nftContract.methods.presale().call()
-			
 				setIsPresale(presale);
-	
+				const preSalePrice = await nftContract.methods.presalePrice().call()
+				setPresalePrice(preSalePrice)
+
+				if(presale == true){
+					setMintPrice(presalePrice)
+				}
+
+				if(presale == false){
+					setMintPrice(mintprice)
+				}
+				
+
 				if (networkId !== 5777) {
 					setBlockchainExplorerURL(CONFIG.NETWORKS[networkId].blockchainExplorerURL)
 					setOpenseaURL(CONFIG.NETWORKS[networkId].openseaURL)
 				}
-				
 			} catch (error) {
 				setIsError(true)
 			}
@@ -110,6 +120,7 @@ function App() {
 				window.location.reload();
 			});
 		}
+
 	}
 
 	
@@ -119,81 +130,126 @@ function App() {
 		if (web3) {
 			const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
 			setAccount(accounts[0])
+			let	ans = addresses.find(o => o.address == account)
+			isAllowedtoMint(ans.max)
+			//mintable()
 		}
 	}
+
+	
+
 	const verify = async (account) => {
 		//console.log(account)
-		let ans = addresses.find(o => o.address == account)
+		
+		let	ans = addresses.find(o => o.address == account)
 		//console.log(ans)
 		//console.log(ans.proof, ans.leaf, ans.max)
-		const verified = await nftContract.methods.verification(ans.proof, ans.leaf, ans.max).send({from: account})
+		try {
+			const verified = await nftContract.methods.verification(ans.proof, ans.leaf, ans.max).send({from: account})
+			
+		} catch (error) {
+			if(error){
+				setIsMinting(true)
+				setShow(true)
+				//console.log(isMinting, "wghy")
+			}
+		
+		}
 	 	//console.log(verified, "verified")
 
-		if(verified == false){
-			window.alert("You are not eligible for presale")
-		}
+		// if(verified == false){
+		// 	window.alert("You are not eligible for presale")
+		// }
+
+		// return verified;
 		
 	}
 	
 	const mintNFTHandler = async () => {
-		
-
+		console.log(check)
+		if(check == false){
+			let	ans = addresses.find(o => o.address == account)
+			isAllowedtoMint(ans.max)
+			console.log(allowedToMint)
+			setcheck(true)
+	}
+		//console.log(isMinting, "1")
 		// Mint NFT
 		if (nftContract) {
-			setIsMinting(true)
-			setIsError(false)
-
-			const status =	await nftContract.methods.isVerified(account).call({from:account})
-
-			//console.log(isPresale,"status", status)
-			if(isPresale == true){
-				verify(account)
+			// setIsMinting(true)
+			// setIsError(false)
+			
+			const status =	await nftContract.methods.isVerified(account).call()
+			console.log(isPresale,"status", status)
+			if(status == false && isPresale == true ){
+				verify(account) 
 			}
+			//console.log(isMinting, "2")
 			
 			let totalweiCost
 			if (isPresale == false){
 				 totalweiCost = String(isprice * mintAmount)
+				 setMintPrice(totalweiCost)
 			} else{
-				totalweiCost = String(isprice * 0)
+				totalweiCost = String(presalePrice * mintAmount)
+				setMintPrice(totalweiCost)
 			}
 
 			
-			await nftContract.methods.mint(mintAmount).send({ from: account, value: totalweiCost})
-				.on('confirmation', async () => {
-					const totalMinted = await nftContract.methods.totalMinted().call()
-					 setSupplyAvailable(1000 - totalMinted)
-				})
-				.on('error', (error) => {
-					window.alert(error)
-					setIsError(true)
-				})
-		}
 
-		setIsMinting(false)
+				await nftContract.methods.mint(mintAmount).send({ from: account, value: totalweiCost})
+					.on('confirmation', async () => {
+						const totalMinted = await nftContract.methods.totalMinted().call()
+					})
+					.on('error', (error) => {
+						window.alert(error)
+						setIsError(true)
+				})
+
+				if(isPresale == true){
+					const preSaleMax =	await nftContract.methods.preSaleMaxMintAmount(account).call()
+					const presaleMint = await nftContract.methods.presaleMinted(account).call()
+					isAllowedtoMint(preSaleMax - presaleMint)
+				}
+
+				if(isPresale == false){
+					const maxPublic = await nftContract.methods.maxPublicAmount().call()
+					const maxMint = await nftContract.methods.maxMintable(account).call()
+					isAllowedtoMint(maxPublic - maxMint)
+				}
+
+			
+		}
+		
+		// setIsMinting(false)
 	};
 
 	useEffect(() => {
-		loadWeb3()
+		loadWeb3();
 	}, [account]);
 
 	useEffect(() => {
 		loadBlockchainData()
 	},[loadBlockchainData]);
 
+	// useEffect(() => {
+	// 	mintable()
+	// }, [mintable])
+
 	return (
 		<div>
-			<nav className="navbar fixed-top mx-3">
-				<a
-					className="navbar-brand col-sm-3 col-md-2 mr-0 mx-4"
-					href="http://www.dappuniversity.com/bootcamp"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<img src={logo} className="App-logo" alt="logo" />
-					Dapp University
-				</a>
-
-				{account ? (
+			<Navbar className='header' bg="" expand="lg">
+  				<Container fluid>
+					<Navbar.Brand href="#home">
+					<img
+						src={logo}
+						width="138"
+						height=""
+						className="d-inline-block align-top"
+						alt="astrogem logo"
+					/>
+					</Navbar.Brand>
+					{account ? (
 					<a
 						href={`https://etherscan.io/address/${account}`}
 						target="_blank"
@@ -202,41 +258,69 @@ function App() {
 						{account.slice(0, 5) + '...' + account.slice(38, 42)}
 					</a>
 				) : (
-					<button onClick={web3Handler} className="button nav-button btn-sm mx-4">Connect Wallet</button>
+					<button onClick={web3Handler} className="header-btn"> Connect MetaMask</button>
 				)}
-			</nav>
+				</Container>
+			</Navbar>
 			<main>
-				<Row className="my-3">
-					<Col className="text-center">
-						<h1 className="text-uppercase">Open Emojis</h1>
+				<Row className='container-fluid fusion-div'>
+					<Col md={12} lg={6}>
+						<div>
+							<img className='image-about-me' src={Fusion} alt='fusion'></img>
+						</div>
+					</Col>
+					<Col md={12} lg={6
+					}>
+						<h2>The Fusion</h2>
+						<p className="paragraph-large">8000 unique NFTs crafted with a blend of 3D and 2 Layers of AI.</p>
+						<ul className='list-gradient-container'>
+							<div className="list-item-gradient">
+								<div><strong>Mint </strong>0.04 ETH</div>
+							</div>
+							<div className='list-item-gradient'>
+								<div><strong>Whitelist Mint - </strong>Monday Jan. 6</div>
+							</div>
+							<div className='list-item-gradient'>
+								<div><strong>Public Sale - </strong>Saturday Jan. 8</div>
+							</div>
+						</ul>
+						<div className="mg-top-48px">
+							<div className="button-container ">
+								<a href="#mint" className="button-primary w-button">Mint</a>
+							</div>
+						</div>
 					</Col>
 				</Row>
-				<Row className="my-4">
-					<Col className="panel grid" sm={12} md={6}>
-						<input type="number" placeholder="MintAmount" onChange={handleMintAmount}></input>
-						
-						<button onClick={mintNFTHandler} className="button mint-button"><span>Mint</span></button>
-						
+				<Row className='mint-div'>
+					<MDBAnimation  reveal type="fadeInRight" duration="3s">
+					<Col md={12} lg={12} sm={12}>
+						<div className='mg-top-48px'>
+							<h2 id="mint" className="mint-page">Mint</h2>
+            				<h5 >Pre-Sale: LIVE</h5>
+							<h5>Public Sale:Sat. January 8th</h5>
+							<h5>0.04 ETH</h5>
+							<div className="w-form"> 
+								<form id="wf-form-Mint-Quantity" name="wf-form-Mint-Quantity" data-name="Mint Quantity" method="get">
+									<input type="number" placeholder="MintAmount" onChange={handleMintAmount}></input>
+								</form>
+							</div>
+							{check == true ? 
+							<p>{`The connected wallet has ${allowedToMint} avaliable`}</p>:<p></p>}
+							<div>
+								<button onClick={mintNFTHandler} className="mint-button"><span>{`Mint for ${mintprice} ETH`}</span></button>
+							</div>
+							{show ?<MDBAnimation reveal type="slide-in-down" duration="3s"> <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+								
+								<Alert.Heading>Oh snap! You Got an error!</Alert.Heading>
+								<p>
+								"You must have an astroGem, Krakenship or rare-crypto-rocket to claim your free mint or you must
+								fvg sign the transaction"
+								</p>
+							</Alert> </MDBAnimation>: <p></p>}
+							<p>{`NFT's Left: ${totalMinted}/${totalSupply}`}</p>
+						</div>
 					</Col>
-					<Col className="panel grid image-showcase mx-4">
-						<img
-							src={isError ? (
-								sadImage
-							) : !isError && isMinting ? (
-								excitedImage
-							) : (
-								happyImage
-							)}
-							alt="emoji-smile"
-							className="image-showcase-example-1"
-						/>
-					</Col>
-				</Row>
-				<Row className="my-3">
-					<Col className="flex">
-						<a href={openseaURL + account} target="_blank" rel="noreferrer" className="button">View My Opensea</a>
-						<a href={`${blockchainExplorerURL}address/${account}`} target="_blank" rel="noreferrer" className="button">My Etherscan</a>
-					</Col>
+					</MDBAnimation>
 				</Row>
 				<Row className="my-2 text-center">
 					{isError ? (
@@ -248,18 +332,58 @@ function App() {
 									target="_blank"
 									rel="noreferrer"
 									className="contract-link d-block my-3">
-									{openEmoji._address}
 								</a>
 							}
-
 							{CONFIG.NETWORKS[currentNetwork] && (
 								<p>Current Network: {CONFIG.NETWORKS[currentNetwork].name}</p>
 							)}
-
-							
 						</div>
 					)}
-					<p>{`NFT's Left: ${supplyAvailable}`}</p>
+				</Row>
+				<Row className='footer-div'>
+					<Col md={12} lg={4}>
+						<div className='footer-img-container'>
+							<Image className='footer-img' fluid src={smallLogo} width='100px' sizes="(max-width: 479px) 67px, 70px"></Image>
+						</div>
+					</Col>
+					<Col md={12} lg={4}>
+						<div className='footer-nav'>
+							<div>
+								<a href="index.html" className="nav-link footer">Mint</a>
+							</div>
+							<div>
+								<a href="https://nfttemplate.webflow.io/#about" className="nav-link footer">Fusion</a>
+							</div>
+							<div>
+								<a href="https://nfttemplate.webflow.io/#about" className="nav-link footer">Genesis</a>
+							</div>
+							<div>
+								<a href="https://nfttemplate.webflow.io/#about" className="nav-link footer">Charter</a>
+							</div>
+							<div>
+								<a href="https://nfttemplate.webflow.io/#about" className="nav-link footer">Team</a>
+							</div>
+						</div>
+					</Col>
+					<Col md={12} lg={4}>
+						<div className='footer-right'>
+							<div className='social-link'>
+								<a href='#'><BsTwitter /></a>
+							</div>
+							<div className='social-link'>
+								<a href='#'><BsInstagram /></a>
+							</div>
+							<div className='social-link'>
+								<a href='#'><BsLinkedin /></a>
+							</div>
+							<div className='social-link'>
+								<a href='#'><BsYoutube /></a>
+							</div>
+							<div className='social-link'>
+								<a href='#'><BsWhatsapp /></a>
+							</div>
+						</div>
+					</Col>
 				</Row>
 			</main>
 		</div>
