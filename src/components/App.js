@@ -109,6 +109,19 @@ function App() {
 
 			if (accounts.length > 0) {
 				setAccount(accounts[0])
+				if(check == false){
+					console.log(accounts[0], "acc 0")
+					console.log(account, "acc")
+					try {
+						let	ans = addresses.find(o => o.address == accounts[0])
+						isAllowedtoMint(ans.max)
+					} catch (error) {
+						setIsMinting(true)
+						setShow(true)
+						console.log(error)
+					}
+					// console.log(allowedToMint)	// setcheck(true)
+				}
 			} else {
 				setMessage('Please connect with MetaMask')
 			}
@@ -171,20 +184,7 @@ function App() {
 	}
 	
 	const mintNFTHandler = async () => {
-		console.log(check)
-		if(check == false){
-			try {
-				let	ans = addresses.find(o => o.address == account)
-				isAllowedtoMint(ans.max)
-			} catch (error) {
-				setIsMinting(true)
-				setShow(true)
-				
-			}
-			
-			// console.log(allowedToMint)
-			// setcheck(true)
-	}
+		
 		//console.log(isMinting, "1")
 		// Mint NFT
 		if (nftContract) {
@@ -318,7 +318,7 @@ function App() {
 								</form>
 							</div>
 							{check == true ? 
-							<p>{`The connected wallet has ${allowedToMint} avaliable`}</p>:<p>{`The connected wallet has ${allowedToMint} avaliable`}</p>}
+							<p>{`The connected wallet has ${allowedToMint} avaliable`}</p>: account ? <p> { `The connected wallet has ${allowedToMint} avaliable`}</p>:<p></p>}
 							<div>
 								<button onClick={mintNFTHandler} className="mint-button"><span>{`Mint for ${mintprice} ETH`}</span></button>
 							</div>
