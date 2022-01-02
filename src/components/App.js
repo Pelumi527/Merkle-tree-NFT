@@ -76,11 +76,12 @@ function App() {
 				setPresalePrice(preSalePrice)
 
 				if(presale == true){
-					setMintPrice(presalePrice)
+					
+					setMintPrice(Web3.utils.fromWei(presalePrice, 'ether'))
 				}
 
 				if(presale == false){
-					setMintPrice(mintprice)
+					setMintPrice(Web3.utils.fromWei(mintprice, 'ether'))
 				}
 				
 
@@ -314,7 +315,7 @@ function App() {
 							{check == true ? 
 							<p>{`The connected wallet has ${allowedToMint} avaliable`}</p>:<p></p>}
 							<div>
-								<button onClick={mintNFTHandler} className="mint-button"><span>{`Mint for ${web3.utils.fromWei(mintprice, 'ether')} ETH`}</span></button>
+								<button onClick={mintNFTHandler} className="mint-button"><span>{`Mint for ${mintprice} ETH`}</span></button>
 							</div>
 							{show ?<MDBAnimation reveal type="slide-in-down" duration="3s"> <Alert variant="danger" onClose={() => setShow(false)} dismissible>
 								
