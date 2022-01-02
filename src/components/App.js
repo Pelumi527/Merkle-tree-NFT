@@ -49,6 +49,10 @@ function App() {
 		setmintAmount(e.target.value)
 	}
 
+	// if(window.location.reload()){
+	// 	setShow(false)
+	// }
+
 	const loadBlockchainData = async () => {
 		// Fetch Contract, Data, etc.
 		 if (web3) {
@@ -175,6 +179,7 @@ function App() {
 			} catch (error) {
 				setIsMinting(true)
 				setShow(true)
+				
 			}
 			
 			// console.log(allowedToMint)
@@ -190,7 +195,7 @@ function App() {
 			console.log(isPresale,"status", status)
 			if(status == false && isPresale == true ){
 				verify(account) 
-				console.log("errrod")
+				
 			}
 			//console.log(isMinting, "2")
 			
@@ -313,7 +318,7 @@ function App() {
 								</form>
 							</div>
 							{check == true ? 
-							<p>{`The connected wallet has ${allowedToMint} avaliable`}</p>:<p></p>}
+							<p>{`The connected wallet has ${allowedToMint} avaliable`}</p>:<p>{`The connected wallet has ${allowedToMint} avaliable`}</p>}
 							<div>
 								<button onClick={mintNFTHandler} className="mint-button"><span>{`Mint for ${mintprice} ETH`}</span></button>
 							</div>
@@ -329,8 +334,7 @@ function App() {
 						</div>
 					</Col>
 					</MDBAnimation>
-				</Row>
-				<Row className="my-2 text-center">
+					<Row className="my-2 text-center">
 					{isError ? (
 						<p>{message}</p>
 					) : (
@@ -347,6 +351,7 @@ function App() {
 							)}
 						</div>
 					)}
+				</Row>
 				</Row>
 				<Row className='footer-div'>
 					<Col md={12} lg={4}>

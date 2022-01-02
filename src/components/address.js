@@ -7860,7 +7860,7 @@ export const addresses = [
         "max": "2"
     },
     {
-        "address": "0xd4af64b2376c324d13703fb9f583208c36d7600b",
+        "address": "0x525B4AF6Baf74F1dB0ed33CFbaF607CfB8cEc296",
         "leaf": "0xe4762517d2688631eb7d24d2cb462f4ac2ec88b0589712ec732c0771f4285fa4",
         "proof": [
             "0xd133d85e2f969e8af5d59919d7545d1e8001812fb0fbe35b57add7770c9ee9fd",
