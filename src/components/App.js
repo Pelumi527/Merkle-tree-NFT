@@ -77,11 +77,11 @@ function App() {
 
 				if(presale == true){
 					
-					setMintPrice(Web3.utils.fromWei(presalePrice, 'ether'))
+					setMintPrice(Web3.utils.fromWei(presalePrice, 'ether')*(mintAmount*1))
 				}
 
 				if(presale == false){
-					setMintPrice(Web3.utils.fromWei(mintprice, 'ether'))
+					setMintPrice(Web3.utils.fromWei(mintprice, 'ether')*(mintAmount))
 				}
 				
 
