@@ -62,7 +62,7 @@ function App() {
 			
 			try {
 			
-				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0x02DCF53A5da78437b3d60A22F7D6d1133b150786")
+				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0x6834FAe34B18D9DA6FBcEc6bb66c184366239985")
 				setNftContract(THEONFT)
 				const mintprice= await nftContract.methods.price().call()	
 				setPrice(mintprice)
@@ -146,11 +146,11 @@ function App() {
 		//console.log(ans.proof, ans.leaf, ans.max)
 		try {
 			const verified = await nftContract.methods.verification(ans.proof, ans.leaf, ans.max).send({from: account})
-			
 		} catch (error) {
 			if(error){
 				setIsMinting(true)
 				setShow(true)
+				console.log("eddd")
 				//console.log(isMinting, "wghy")
 			}
 		
@@ -168,10 +168,16 @@ function App() {
 	const mintNFTHandler = async () => {
 		console.log(check)
 		if(check == false){
-			let	ans = addresses.find(o => o.address == account)
-			isAllowedtoMint(ans.max)
-			console.log(allowedToMint)
-			setcheck(true)
+			try {
+				let	ans = addresses.find(o => o.address == account)
+				isAllowedtoMint(ans.max)
+			} catch (error) {
+				setIsMinting(true)
+				setShow(true)
+			}
+			
+			// console.log(allowedToMint)
+			// setcheck(true)
 	}
 		//console.log(isMinting, "1")
 		// Mint NFT
@@ -183,6 +189,7 @@ function App() {
 			console.log(isPresale,"status", status)
 			if(status == false && isPresale == true ){
 				verify(account) 
+				console.log("errrod")
 			}
 			//console.log(isMinting, "2")
 			
