@@ -314,7 +314,7 @@ function App() {
 							{check == true ? 
 							<p>{`The connected wallet has ${allowedToMint} avaliable`}</p>:<p></p>}
 							<div>
-								<button onClick={mintNFTHandler} className="mint-button"><span>{`Mint for ${mintprice} ETH`}</span></button>
+								<button onClick={mintNFTHandler} className="mint-button"><span>{`Mint for ${web3.utils.fromWei(mintprice, 'ether')} ETH`}</span></button>
 							</div>
 							{show ?<MDBAnimation reveal type="slide-in-down" duration="3s"> <Alert variant="danger" onClose={() => setShow(false)} dismissible>
 								
