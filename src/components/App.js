@@ -46,6 +46,7 @@ function App() {
 	const [check, setcheck] = useState(false);
 	const [balance, setbalance] = useState(0);
 	const [gottenBal, setgottenBal] = useState(0);
+	const [status, setstatus] = useState(false);
 
 
 	const handleMintAmount = (e) => {
@@ -73,7 +74,6 @@ function App() {
 	
 				if (accounts.length > 0) {
 					setAccount(accounts[0])
-					firstmax(accounts[0])
 				} else {
 					setMessage('Please connect with MetaMask')
 				}
@@ -81,17 +81,27 @@ function App() {
 			
 				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0x02DCF53A5da78437b3d60A22F7D6d1133b150786")
 				setNftContract(THEONFT)
+
 				const mintprice= await nftContract.methods.price().call()	
 				setPrice(mintprice)
+				//console.log(mintprice)
+
 				const totalMinted = await nftContract.methods.totalMinted().call()
 				settotalMinted(totalMinted)
+
 				const maxSupply = await nftContract.methods.maxSupply().call()
 				setTotalSupply(maxSupply)
+
 				const presale = await nftContract.methods.presale().call()
 				setIsPresale(presale);
+			
 				const preSalePrice = await nftContract.methods.presalePrice().call()
 				setPresalePrice(preSalePrice)
+				
+				const status =	await nftContract.methods.isVerified(accounts[0]).call()
+				setstatus(status)
 
+				
 				if(presale == true){
 					setMintPrice(Web3.utils.fromWei(presalePrice, 'ether')*(mintAmount*1))
 					const presaleMint = await nftContract.methods.presaleMinted(accounts[0]).call()
@@ -100,8 +110,25 @@ function App() {
 					setgottenBal(preSaleMax - presaleMint)
 				}
 
+				
+
+				if(presale === true && status === true){
+					const presaleMint = await nftContract.methods.presaleMinted(accounts[0]).call()
+					setbalance(presaleMint)
+					const preSaleMax =	await nftContract.methods.preSaleMaxMintAmount(account).call()
+					setgottenBal(preSaleMax - presaleMint)
+					isAllowedtoMint(preSaleMax - presaleMint)
+				}
+
 				if(presale == false){
 					setMintPrice(Web3.utils.fromWei(mintprice, 'ether')*(mintAmount))
+				}
+
+				if(isPresale == false){
+					const maxPublic = await nftContract.methods.maxPublicAmount().call()
+					const maxMint = await nftContract.methods.maxMintable(account).call()
+					setbalance(maxMint)
+					setgottenBal(maxPublic - maxMint)
 				}
 				
 
@@ -128,7 +155,9 @@ function App() {
 			const accounts = await web3.eth.getAccounts()
 			if (accounts.length > 0) {
 				setAccount(accounts[0])
-				firstmax(accounts[0])
+				if(isPresale == true && status == false ){
+					firstmax(accounts[0])
+				}
 			} else {
 				setMessage('Please connect with MetaMask')
 			}
@@ -136,19 +165,6 @@ function App() {
 			window.ethereum.on('accountsChanged', function (accounts) {
 				setAccount(accounts[0])
 				setMessage(null)
-				// setcheck(false)
-				// if(check == false){
-				// 	try {
-				// 		let	ans = addresses.find(o => o.address == accounts[0])
-				// 		isAllowedtoMint(ans.max)
-				// 		setcheck(true)
-				// 	} catch (error) {
-				// 		setIsMinting(true)
-				// 		setShow(true)
-				// 		console.log(error)
-				// 	}
-				// 	// console.log(allowedToMint)	// setcheck(true)
-				// }
 			});
 
 			window.ethereum.on('chainChanged', (chainId) => {
@@ -160,16 +176,18 @@ function App() {
 		}
 
 	}
-
 	
 
 	// MetaMask Login/Connect
 	const web3Handler = async () => {
+		let pass = false
 		if (web3) {
 			const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
 			setAccount(accounts[0])
-			//mintable()
+			pass = true;
 		}
+		return pass;
+		console.log(pass)
 	}
 
 	
@@ -202,9 +220,12 @@ function App() {
 	}
 	
 	const mintNFTHandler = async () => {
+		console.log(!web3Handler())
 		
-		//console.log(isMinting, "1")
-		// Mint NFT
+		if(!web3Handler()){
+			window.alert("Connect your Metamask")
+		}
+
 		if (nftContract) {
 			// setIsMinting(true)
 			// setIsError(false)
@@ -260,17 +281,13 @@ function App() {
 
 	useEffect(() => {
 		loadBlockchainData()
-	},[loadBlockchainData]);
+		//console.log("you")
+	},[loadBlockchainData,account]);
 
 	useEffect(() => {
 		loadWeb3();
+		//console.log("mee")
 	}, [account]);
-
-	
-
-	// useEffect(() => {
-	// 	mintable()
-	// }, [mintable])
 
 	return (
 		<div>
