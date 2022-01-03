@@ -17,6 +17,7 @@ import CONFIG from '../config.json';
 import { Navbar,Container, Image, Row, Col, Alert } from 'react-bootstrap';
 import {BsYoutube, BsTwitter, BsInstagram, BsLinkedin, BsWhatsapp} from 'react-icons/bs'
 import {MDBAnimation} from 'mdbreact';
+import { set } from 'lodash';
 
 function App() {
 	const [web3, setWeb3] = useState(null)
@@ -43,6 +44,8 @@ function App() {
 	const [show, setShow] = useState(false);
 	const [mintprice, setMintPrice] = useState(0)
 	const [check, setcheck] = useState(false);
+	const [balance, setbalance] = useState(0);
+	const [gottenBal, setgottenBal] = useState(0);
 
 
 	const handleMintAmount = (e) => {
@@ -65,6 +68,16 @@ function App() {
 			}
 			
 			try {
+
+				const accounts = await web3.eth.getAccounts()
+	
+				if (accounts.length > 0) {
+					setAccount(accounts[0])
+					firstmax(accounts[0])
+				} else {
+					setMessage('Please connect with MetaMask')
+				}
+
 			
 				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0x02DCF53A5da78437b3d60A22F7D6d1133b150786")
 				setNftContract(THEONFT)
@@ -80,8 +93,11 @@ function App() {
 				setPresalePrice(preSalePrice)
 
 				if(presale == true){
-					
 					setMintPrice(Web3.utils.fromWei(presalePrice, 'ether')*(mintAmount*1))
+					const presaleMint = await nftContract.methods.presaleMinted(accounts[0]).call()
+					setbalance(presaleMint)
+					const preSaleMax =	await nftContract.methods.preSaleMaxMintAmount(account).call()
+					setgottenBal(preSaleMax - presaleMint)
 				}
 
 				if(presale == false){
@@ -99,6 +115,10 @@ function App() {
 		 }
 	}
 
+	const firstmax = async (pass) => {
+		let	ans = addresses.find(o => o.address == pass)
+		isAllowedtoMint(ans.max)
+	}
 
 	const loadWeb3 = async () => {
 		if (typeof window.ethereum !== 'undefined' && !account) {
@@ -106,22 +126,9 @@ function App() {
 			setWeb3(web3)
 		
 			const accounts = await web3.eth.getAccounts()
-
 			if (accounts.length > 0) {
 				setAccount(accounts[0])
-				if(check == false){
-					console.log(accounts[0], "acc 0")
-					console.log(account, "acc")
-					try {
-						let	ans = addresses.find(o => o.address == accounts[0])
-						isAllowedtoMint(ans.max)
-					} catch (error) {
-						setIsMinting(true)
-						setShow(true)
-						console.log(error)
-					}
-					// console.log(allowedToMint)	// setcheck(true)
-				}
+				firstmax(accounts[0])
 			} else {
 				setMessage('Please connect with MetaMask')
 			}
@@ -129,6 +136,19 @@ function App() {
 			window.ethereum.on('accountsChanged', function (accounts) {
 				setAccount(accounts[0])
 				setMessage(null)
+				// setcheck(false)
+				// if(check == false){
+				// 	try {
+				// 		let	ans = addresses.find(o => o.address == accounts[0])
+				// 		isAllowedtoMint(ans.max)
+				// 		setcheck(true)
+				// 	} catch (error) {
+				// 		setIsMinting(true)
+				// 		setShow(true)
+				// 		console.log(error)
+				// 	}
+				// 	// console.log(allowedToMint)	// setcheck(true)
+				// }
 			});
 
 			window.ethereum.on('chainChanged', (chainId) => {
@@ -148,8 +168,6 @@ function App() {
 		if (web3) {
 			const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
 			setAccount(accounts[0])
-			let	ans = addresses.find(o => o.address == account)
-			isAllowedtoMint(ans.max)
 			//mintable()
 		}
 	}
@@ -168,7 +186,7 @@ function App() {
 			if(error){
 				setIsMinting(true)
 				setShow(true)
-				console.log("eddd")
+				
 				//console.log(isMinting, "wghy")
 			}
 		
@@ -192,7 +210,7 @@ function App() {
 			// setIsError(false)
 			
 			const status =	await nftContract.methods.isVerified(account).call()
-			console.log(isPresale,"status", status)
+			//console.log(isPresale,"status", status)
 			if(status == false && isPresale == true ){
 				verify(account) 
 				
@@ -222,13 +240,16 @@ function App() {
 				if(isPresale == true){
 					const preSaleMax =	await nftContract.methods.preSaleMaxMintAmount(account).call()
 					const presaleMint = await nftContract.methods.presaleMinted(account).call()
-					isAllowedtoMint(preSaleMax - presaleMint)
+					setbalance(presaleMint)
+					setgottenBal(preSaleMax - presaleMint)
+					//console.log(gottenBal, "why")
 				}
 
 				if(isPresale == false){
 					const maxPublic = await nftContract.methods.maxPublicAmount().call()
 					const maxMint = await nftContract.methods.maxMintable(account).call()
-					isAllowedtoMint(maxPublic - maxMint)
+					setbalance(maxMint + 1)
+					setgottenBal(maxPublic - maxMint)
 				}
 
 			
@@ -238,12 +259,14 @@ function App() {
 	};
 
 	useEffect(() => {
+		loadBlockchainData()
+	},[loadBlockchainData]);
+
+	useEffect(() => {
 		loadWeb3();
 	}, [account]);
 
-	useEffect(() => {
-		loadBlockchainData()
-	},[loadBlockchainData]);
+	
 
 	// useEffect(() => {
 	// 	mintable()
@@ -317,8 +340,8 @@ function App() {
 									<input type="number" placeholder="MintAmount" onChange={handleMintAmount}></input>
 								</form>
 							</div>
-							{check == true ? 
-							<p>{`The connected wallet has ${allowedToMint} avaliable`}</p>: account ? <p> { `The connected wallet has ${allowedToMint} avaliable`}</p>:<p></p>}
+							{balance > 0 ? 
+							<p>{`The connected wallet has ${gottenBal} avaliable`}</p>: account ? <p> { `The connected wallet has ${allowedToMint} avaliable`}</p>:<p></p>}
 							<div>
 								<button onClick={mintNFTHandler} className="mint-button"><span>{`Mint for ${mintprice} ETH`}</span></button>
 							</div>
