@@ -70,13 +70,13 @@ function App() {
 			
 			try {
 
-				const accounts = await web3.eth.getAccounts()
+				// const accounts = await web3.eth.getAccounts()
 	
-				if (accounts.length > 0) {
-					setAccount(accounts[0])
-				} else {
-					setMessage('Please connect with MetaMask')
-				}
+				// if (accounts.length > 0) {
+				// 	setAccount(accounts[0])
+				// } else {
+				// 	setMessage('Please connect with MetaMask')
+				// }
 
 			
 				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0x02DCF53A5da78437b3d60A22F7D6d1133b150786")
@@ -98,13 +98,13 @@ function App() {
 				const preSalePrice = await nftContract.methods.presalePrice().call()
 				setPresalePrice(preSalePrice)
 				
-				const status =	await nftContract.methods.isVerified(accounts[0]).call()
+				const status =	await nftContract.methods.isVerified(account).call()
 				setstatus(status)
 
 				
 				if(presale == true){
 					setMintPrice(Web3.utils.fromWei(presalePrice, 'ether')*(mintAmount*1))
-					const presaleMint = await nftContract.methods.presaleMinted(accounts[0]).call()
+					const presaleMint = await nftContract.methods.presaleMinted(account).call()
 					setbalance(presaleMint)
 					const preSaleMax =	await nftContract.methods.preSaleMaxMintAmount(account).call()
 					setgottenBal(preSaleMax - presaleMint)
@@ -113,7 +113,7 @@ function App() {
 				
 
 				if(presale === true && status === true){
-					const presaleMint = await nftContract.methods.presaleMinted(accounts[0]).call()
+					const presaleMint = await nftContract.methods.presaleMinted(account).call()
 					setbalance(presaleMint)
 					const preSaleMax =	await nftContract.methods.preSaleMaxMintAmount(account).call()
 					setgottenBal(preSaleMax - presaleMint)
