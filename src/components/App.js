@@ -43,7 +43,7 @@ function App() {
 	const [allowedToMint, isAllowedtoMint] = useState(0)
 	const [show, setShow] = useState(false);
 	const [mintprice, setMintPrice] = useState(0)
-	const [check, setcheck] = useState(false);
+	const [check, setcheck] = useState();
 	const [balance, setbalance] = useState(0);
 	const [gottenBal, setgottenBal] = useState(0);
 	const [status, setstatus] = useState(false);
@@ -102,6 +102,8 @@ function App() {
 				setstatus(status)
 
 				
+
+				
 				if(presale == true){
 					setMintPrice(Web3.utils.fromWei(presalePrice, 'ether')*(mintAmount*1))
 					const presaleMint = await nftContract.methods.presaleMinted(account).call()
@@ -130,6 +132,19 @@ function App() {
 					setbalance(maxMint)
 					setgottenBal(maxPublic - maxMint)
 				}
+
+				if(isPresale == true && status == false ){
+					try{
+						//console.log(accounts[0], "accs")
+						let	ans =  addresses.find(o => o.address == account)
+						isAllowedtoMint(ans.max)
+					} catch(error){
+						console.log(error)
+					}
+					firstmax(account)
+
+					//firstmax(account)
+				}
 				
 
 				if (networkId !== 5777) {
@@ -142,9 +157,13 @@ function App() {
 		 }
 	}
 
-	const firstmax = async (pass) => {
-		let	ans = addresses.find(o => o.address == pass)
-		isAllowedtoMint(ans.max)
+	const firstmax = async (account) => {
+		try{
+			let	ans = addresses.find(o => o.address == account)
+			isAllowedtoMint(ans.max)
+		} catch(error){
+			console.log(error)
+		}
 	}
 
 	const loadWeb3 = async () => {
@@ -155,15 +174,15 @@ function App() {
 			const accounts = await web3.eth.getAccounts()
 			if (accounts.length > 0) {
 				setAccount(accounts[0])
-				if(isPresale == true && status == false ){
-					firstmax(accounts[0])
-				}
+				setcheck(accounts[0])
+				
 			} else {
 				setMessage('Please connect with MetaMask')
 			}
 
 			window.ethereum.on('accountsChanged', function (accounts) {
 				setAccount(accounts[0])
+				setcheck(accounts[0])
 				setMessage(null)
 			});
 
@@ -173,6 +192,8 @@ function App() {
 				// We recommend reloading the page unless you have good reason not to.
 				window.location.reload();
 			});
+
+			
 		}
 
 	}
@@ -180,21 +201,17 @@ function App() {
 
 	// MetaMask Login/Connect
 	const web3Handler = async () => {
-		let pass = false
 		if (web3) {
 			const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
 			setAccount(accounts[0])
-			pass = true;
-			return pass;
+			setcheck(accounts[0])
 		}
-		
-		console.log(pass)
 	}
 
 	
 
 	const verify = async (account) => {
-		//console.log(account)
+		console.log(account, "1")
 		
 		let	ans = addresses.find(o => o.address == account)
 		//console.log(ans)
@@ -231,10 +248,11 @@ function App() {
 		if (nftContract) {
 			// setIsMinting(true)
 			// setIsError(false)
-			
+			console.log(account, "2")
 			const status =	await nftContract.methods.isVerified(account).call()
 			//console.log(isPresale,"status", status)
 			if(status == false && isPresale == true ){
+				console.log(account, "3")
 				verify(account) 
 				
 			}
@@ -284,11 +302,12 @@ function App() {
 	useEffect(() => {
 		loadBlockchainData()
 		//console.log("you")
-	},[loadBlockchainData,account]);
+	},[loadBlockchainData]);
 
 	useEffect(() => {
 		loadWeb3();
-		//console.log("mee")
+		console.log("mee")
+		
 	}, [account]);
 
 	return (
@@ -372,7 +391,7 @@ function App() {
 								fvg sign the transaction"
 								</p>
 							</Alert> </MDBAnimation>: <p></p>}
-							<p>{`NFT's Left: ${totalMinted}/${totalSupply}`}</p>
+							<p>{`${totalMinted}/${totalSupply} Minted`}</p>
 						</div>
 					</Col>
 					</MDBAnimation>

@@ -4832,7 +4832,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0x432f151ee80b99577e56a481735e41e25402fc98",
+        "address": 0x432f151ee80b99577e56a481735e41e25402fc98,
         "leaf": "0x00f48481845ac4125863c8a184ec868391e542b975e633879ae979e3d18550b5",
         "proof": [
             "0xa31ce12e9dbdd67c84a904f6903154bc2b4dd43f59550fe8b74991d93eb76767",
@@ -7520,7 +7520,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0x4d4937f2e4a79e2d09461f74fd62c05b630d7618",
+        "address": 0x4d4937f2e4a79e2d09461f74fd62c05b630d7618,
         "leaf": "0x0993fb6bb8b0aef782877f510d438e6cd7e7df8848314d20cfe9af69ae819ebe",
         "proof": [
             "0xf657f7cc65772865ed74161f93532105f9f2d76c4a071bfc4362ad62ca54cf1b",
@@ -7536,7 +7536,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0xb8486f271bcd6354f752017bc069440127bb5952",
+        "address": 0xb8486f271bcd6354f752017bc069440127bb5952,
         "leaf": "0xf657f7cc65772865ed74161f93532105f9f2d76c4a071bfc4362ad62ca54cf1b",
         "proof": [
             "0x0993fb6bb8b0aef782877f510d438e6cd7e7df8848314d20cfe9af69ae819ebe",
@@ -7552,7 +7552,7 @@ export const addresses = [
         "max": "2"
     },
     {
-        "address": "0x6beef2b2fe00fddca12a8cda2d4b00435b0ba3b6",
+        "address": 0x6beef2b2fe00fddca12a8cda2d4b00435b0ba3b6,
         "leaf": "0x75860f912a9d1d0ee4de7ad08ab0da60586297a740f0e9fb9e69e7b2c412a5dd",
         "proof": [
             "0xf5b0d94d9c30e4bbb0943fb4771ed64c10f7c20076fc2ff92a614f21af5afda6",
@@ -7568,7 +7568,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0x18120dbbe7ae10c72320d0ab4710b58749d0c1e7",
+        "address": 0x18120dbbe7ae10c72320d0ab4710b58749d0c1e7,
         "leaf": "0xf5b0d94d9c30e4bbb0943fb4771ed64c10f7c20076fc2ff92a614f21af5afda6",
         "proof": [
             "0x75860f912a9d1d0ee4de7ad08ab0da60586297a740f0e9fb9e69e7b2c412a5dd",
@@ -7584,7 +7584,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0x294491da597a0e78c250d99c3fb815f32df48e28",
+        "address": 0x294491da597a0e78c250d99c3fb815f32df48e28,
         "leaf": "0xf6d619ff44edb8693300c5c0a58a13824316537589704559061aa60053421829",
         "proof": [
             "0xd64696aa5dfa5b0f6007a70409b9fd3b99e8ea3d8ec2a0f125f14dc05ed0ce33",
@@ -7600,7 +7600,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0x1e82e222564293e3507c2966b27f587ee2570671",
+        "address": 0x1e82e222564293e3507c2966b27f587ee2570671,
         "leaf": "0xd64696aa5dfa5b0f6007a70409b9fd3b99e8ea3d8ec2a0f125f14dc05ed0ce33",
         "proof": [
             "0xf6d619ff44edb8693300c5c0a58a13824316537589704559061aa60053421829",
@@ -7616,7 +7616,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0x9b1f13eddba3c852d6c38bb23441ef4962d18040",
+        "address": 0x9b1f13eddba3c852d6c38bb23441ef4962d18040,
         "leaf": "0x083d88de2fefb233cb7a3e5f5bcbcd07aa23211d9582185014c398141c3f731d",
         "proof": [
             "0x199240986c2c34392d0fcb2923106ff1787b86a2048f80cb3d317cb21537de98",
@@ -7632,7 +7632,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0x0c9e725902f2eeec063c16d253f38684e3192001",
+        "address": 0x0c9e725902f2eeec063c16d253f38684e3192001,
         "leaf": "0x199240986c2c34392d0fcb2923106ff1787b86a2048f80cb3d317cb21537de98",
         "proof": [
             "0x083d88de2fefb233cb7a3e5f5bcbcd07aa23211d9582185014c398141c3f731d",
@@ -7648,7 +7648,7 @@ export const addresses = [
         "max": " 2"
     },
     {
-        "address": "0x19a857ce267adc1d8e428e36624414910d31ff82",
+        "address": 0x19a857ce267adc1d8e428e36624414910d31ff82,
         "leaf": "0x06cb977c7f049dae480e2412da623468e9b34672101541839357722b13b8c13e",
         "proof": [
             "0x82fc5a2ba68856797fb9625a7cca44ed132234e9f47a77767ff6cc7c5b0534b1",
@@ -7664,7 +7664,7 @@ export const addresses = [
         "max": "2"
     },
     {
-        "address": "0xcff74149d6a1a8a9a01b8a3ba14becf5047320a8",
+        "address": 0xcff74149d6a1a8a9a01b8a3ba14becf5047320a8,
         "leaf": "0x82fc5a2ba68856797fb9625a7cca44ed132234e9f47a77767ff6cc7c5b0534b1",
         "proof": [
             "0x06cb977c7f049dae480e2412da623468e9b34672101541839357722b13b8c13e",
@@ -7680,7 +7680,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0x2baf25bfbb188c22fccefa4fe5a5837e9c822334",
+        "address": 0x2baf25bfbb188c22fccefa4fe5a5837e9c822334,
         "leaf": "0xb1cdc1e1298e25eab83a7b11aa0d33dfb929f48209288d0951772312cc84aa1c",
         "proof": [
             "0x68d0b18b53ff2ae7b6cb8fa182099caf28294a1898576c2f674093cc993b12ac",
@@ -7695,7 +7695,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0xbdd95abe8a7694ccd77143376b0fbea183e6a740",
+        "address": 0xbdd95abe8a7694ccd77143376b0fbea183e6a740,
         "leaf": "0x68d0b18b53ff2ae7b6cb8fa182099caf28294a1898576c2f674093cc993b12ac",
         "proof": [
             "0xb1cdc1e1298e25eab83a7b11aa0d33dfb929f48209288d0951772312cc84aa1c",
@@ -7710,7 +7710,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0xf153130aee91f6ca605a88000299189fd41b2275",
+        "address": 0xf153130aee91f6ca605a88000299189fd41b2275,
         "leaf": "0x061dde076ffd0cfdda6dd14fcd34b8f24d2faca610d8ecf985230139cb4025ec",
         "proof": [
             "0xc29e4837d663a8d670b6b148183939da4365929aeec3bc062ae8f4d24ff1bd1c",
@@ -7725,7 +7725,7 @@ export const addresses = [
         "max": "2"
     },
     {
-        "address": "0x550e970e31a45b06df01a00b1c89a478d4d5e00a",
+        "address": 0x550e970e31a45b06df01a00b1c89a478d4d5e00a,
         "leaf": "0xc29e4837d663a8d670b6b148183939da4365929aeec3bc062ae8f4d24ff1bd1c",
         "proof": [
             "0x061dde076ffd0cfdda6dd14fcd34b8f24d2faca610d8ecf985230139cb4025ec",
@@ -7740,7 +7740,7 @@ export const addresses = [
         "max": " 1"
     },
     {
-        "address": "0xe52ee356e4320dbc467d72a5e7931c1f24be2912",
+        "address": 0xe52ee356e4320dbc467d72a5e7931c1f24be2912,
         "leaf": "0x2112cddc847d3f897c869f05847e83913a677defac4aad551bafa1b1cc3e5b0b",
         "proof": [
             "0x6b6dccd1ab38da2956ff82262205662ee08b07077aac8335008ff399d81af34c",
@@ -7755,7 +7755,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0x49f875c4e6c32ea22a1e715dffac28c0ff402faf",
+        "address": 0x49f875c4e6c32ea22a1e715dffac28c0ff402faf,
         "leaf": "0x6b6dccd1ab38da2956ff82262205662ee08b07077aac8335008ff399d81af34c",
         "proof": [
             "0x2112cddc847d3f897c869f05847e83913a677defac4aad551bafa1b1cc3e5b0b",
@@ -7770,7 +7770,7 @@ export const addresses = [
         "max": " 1"
     },
     {
-        "address": "0xfec8d31f2e9f552330ff0d4fe9f4f40870b1295a",
+        "address": 0xfec8d31f2e9f552330ff0d4fe9f4f40870b1295a,
         "leaf": "0xc6958d67d0755f72051e197c53d73618cef2c11c69bbed21283a9598ce342fcf",
         "proof": [
             "0xcae70297daac5aed2ed47e64763fa44c1bb88b92bbd7d732ab9f011ca4ee7874",
@@ -7785,7 +7785,7 @@ export const addresses = [
         "max": "2"
     },
     {
-        "address": "0xadf96052659d0572945f8f50d21b9bd6e661da09",
+        "address": 0xadf96052659d0572945f8f50d21b9bd6e661da09,
         "leaf": "0xcae70297daac5aed2ed47e64763fa44c1bb88b92bbd7d732ab9f011ca4ee7874",
         "proof": [
             "0xc6958d67d0755f72051e197c53d73618cef2c11c69bbed21283a9598ce342fcf",
@@ -7800,7 +7800,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0xb6339b84f9902e4bae8f6144048c224d85a18647",
+        "address": 0xb6339b84f9902e4bae8f6144048c224d85a18647,
         "leaf": "0xab06de29f7bca8a50d46b3752acdb8eef1c84d7fe1f0f7cb07174cc672aa6b52",
         "proof": [
             "0xe6b9f9b22578bcceb98aa667aa558b3a743b1f98249087d9e86825bb0e910b7b",
@@ -7815,7 +7815,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0xb5c6763d4e737d403897b85cb87d4c077411eb16",
+        "address": 0xb5c6763d4e737d403897b85cb87d4c077411eb16,
         "leaf": "0xe6b9f9b22578bcceb98aa667aa558b3a743b1f98249087d9e86825bb0e910b7b",
         "proof": [
             "0xab06de29f7bca8a50d46b3752acdb8eef1c84d7fe1f0f7cb07174cc672aa6b52",
@@ -7830,7 +7830,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0x32Dc647dDB99de13baD60ffa62e2a8E0eBAf5659",
+        "address": 0x32Dc647dDB99de13baD60ffa62e2a8E0eBAf5659,
         "leaf": "0x1c5e2fdad06527bdbd8567e6553116cf1896a23317694b60321b8a2c31c90138",
         "proof": [
             "0x1037078cc2818005b25571d07c5e4f524e803b2ede18a4dd157330e3a7cef952",
@@ -7845,7 +7845,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address": "0xae77719e9997567951bc08e6e42f885798ad4b71",
+        "address": 0xae77719e9997567951bc08e6e42f885798ad4b71,
         "leaf": "0x1037078cc2818005b25571d07c5e4f524e803b2ede18a4dd157330e3a7cef952",
         "proof": [
             "0x1c5e2fdad06527bdbd8567e6553116cf1896a23317694b60321b8a2c31c90138",
@@ -7860,7 +7860,7 @@ export const addresses = [
         "max": "2"
     },
     {
-        "address": "0x8F4B05DDB8a0E5F890f5CF14c79bd71eC33eEb8C",
+        "address": 0xEaf089017Aa4E150Ca930026E0E38cecB2fEe987,
         "leaf": "0xe4762517d2688631eb7d24d2cb462f4ac2ec88b0589712ec732c0771f4285fa4",
         "proof": [
             "0xd133d85e2f969e8af5d59919d7545d1e8001812fb0fbe35b57add7770c9ee9fd",
@@ -7870,6 +7870,6 @@ export const addresses = [
             "0x8f143bb62d2e97fe6f6542c409ebfe15636c7931bf59803f28067e7fbe46cb3e",
             "0x8ee392be44255ce3e8eb2e260d794f01153b62efa57a79623725ffc4651ff97e"
         ],
-        "max": "2"
+        "max": "8"
     }
 ]
