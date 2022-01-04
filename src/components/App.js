@@ -185,8 +185,9 @@ function App() {
 			const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
 			setAccount(accounts[0])
 			pass = true;
+			return pass;
 		}
-		return pass;
+		
 		console.log(pass)
 	}
 
@@ -220,11 +221,12 @@ function App() {
 	}
 	
 	const mintNFTHandler = async () => {
-		console.log(!web3Handler())
+		// console.log(!web3Handler())
 		
-		if(!web3Handler()){
-			window.alert("Connect your Metamask")
-		}
+		// if(!web3Handler()){
+		// 	web3Handler()
+		// 	window.alert("Connect your Metamask")
+		// }
 
 		if (nftContract) {
 			// setIsMinting(true)
@@ -360,7 +362,7 @@ function App() {
 							{balance > 0 ? 
 							<p>{`The connected wallet has ${gottenBal} avaliable`}</p>: account ? <p> { `The connected wallet has ${allowedToMint} avaliable`}</p>:<p></p>}
 							<div>
-								<button onClick={mintNFTHandler} className="mint-button"><span>{`Mint for ${mintprice} ETH`}</span></button>
+								{account ? <button onClick={mintNFTHandler} className="mint-button"><span>{`Mint for ${mintprice} ETH`}</span></button>:<button onClick={web3Handler} className="header-btn"> Connect MetaMask</button>}
 							</div>
 							{show ?<MDBAnimation reveal type="slide-in-down" duration="3s"> <Alert variant="danger" onClose={() => setShow(false)} dismissible>
 								
