@@ -14,7 +14,7 @@ import './App.css'
 // Import ABI + Config
 import TheoNFT from '../abis/TheoNFT.json';
 import CONFIG from '../config.json';
-import { Navbar,Container, Image, Row, Col, Alert } from 'react-bootstrap';
+import { Navbar,Container, Image, Row, Col, Alert, Modal } from 'react-bootstrap';
 import {BsYoutube, BsTwitter, BsInstagram, BsLinkedin, BsWhatsapp} from 'react-icons/bs'
 import {MDBAnimation} from 'mdbreact';
 import { set } from 'lodash';
@@ -47,6 +47,7 @@ function App() {
 	const [balance, setbalance] = useState(0);
 	const [gottenBal, setgottenBal] = useState(0);
 	const [status, setstatus] = useState(false);
+	const [smShow, setSmShow] = useState(false);
 
 
 	const handleMintAmount = (e) => {
@@ -254,8 +255,9 @@ function App() {
 			//console.log(isPresale,"status", status)
 			if(status == false && isPresale == true ){
 				console.log(account, "3")
-				verify(account) 
-				
+				setSmShow(true)
+				await verify(account) 
+				setSmShow(false)
 			}
 			//console.log(isMinting, "2")
 			
@@ -269,7 +271,7 @@ function App() {
 			}
 
 			
-
+			
 				await nftContract.methods.mint(mintAmount).send({ from: account, value: totalweiCost})
 					.on('confirmation', async () => {
 						const totalMinted = await nftContract.methods.totalMinted().call()
@@ -338,6 +340,19 @@ function App() {
 				</Container>
 			</Navbar>
 			<main>
+			<Modal
+				size="sm"
+				show={smShow}
+				onHide={() => setSmShow(false)}
+				aria-labelledby="example-modal-sizes-title-sm"
+			>
+				<Modal.Header closeButton>
+				<Modal.Title id="example-modal-sizes-title-sm">
+					Verifying your wallet.......
+				</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>...</Modal.Body>
+			</Modal>
 				<Row className='container-fluid fusion-div'>
 					<Col md={12} lg={6}>
 						<div>
