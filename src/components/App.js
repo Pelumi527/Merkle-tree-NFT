@@ -15,9 +15,9 @@ import {BsInstagram, BsTwitter} from "react-icons/bs"
 // Import ABI + Config
 import TheoNFT from '../abis/TheoNFT.json';
 import CONFIG from '../config.json';
-import { Navbar,Container, Image, Row, Col, Alert, Modal,Nav } from 'react-bootstrap';
+import { Row, Col, Alert, Modal,Spinner } from 'react-bootstrap';
 import {MDBAnimation} from 'mdbreact';
-import { set } from 'lodash';
+
 
 function App() {
 	const [web3, setWeb3] = useState(null)
@@ -251,7 +251,7 @@ function App() {
 				await nftContract.methods.mint(mintAmount).send({ from: account, value: totalweiCost})
 					.on('confirmation', async () => {
 						setSmShow2(false)
-						setSmShow3(true)
+						
 						const totalMinted = await nftContract.methods.totalMinted().call()
 					})
 					.on('error', (error) => {
@@ -259,7 +259,7 @@ function App() {
 						setIsError(true)
 						setSmShow2(false)
 					})
-				
+					setSmShow3(true)
 				if(isPresale == true){
 					const preSaleMax =	await nftContract.methods.preSaleMaxMintAmount(account).call()
 					const presaleMint = await nftContract.methods.presaleMinted(account).call()
@@ -351,7 +351,11 @@ function App() {
 			>
 				<Modal.Header closeButton>
 				<Modal.Title id="example-modal-sizes-title-sm">
-						Minting....
+						
+				<Spinner animation="border" role="status">
+  					<span className="visually-hidden"></span>
+				</Spinner>
+				Minting....
 				</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>...</Modal.Body>
