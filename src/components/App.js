@@ -4,18 +4,18 @@ import { addresses } from './address';
 import Web3 from 'web3'
 
 // Import Images + CSS
-import logo from '../images/logo.png'
-import smallLogo from '../images/logo-small.png'
-import Fusion from '../images/OceanFusion1024.png';
+import logo from '../images/garvenlogo.png'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
+import discordIcon from "../images/discord-icon.png";
+import OpenseaIcon from "../images/Opensea-Logomark-Transparent-White.png"
+import {BsInstagram, BsTwitter} from "react-icons/bs"
 
 
 // Import ABI + Config
 import TheoNFT from '../abis/TheoNFT.json';
 import CONFIG from '../config.json';
-import { Navbar,Container, Image, Row, Col, Alert, Modal } from 'react-bootstrap';
-import {BsYoutube, BsTwitter, BsInstagram, BsLinkedin, BsWhatsapp} from 'react-icons/bs'
+import { Navbar,Container, Image, Row, Col, Alert, Modal,Nav } from 'react-bootstrap';
 import {MDBAnimation} from 'mdbreact';
 import { set } from 'lodash';
 
@@ -48,15 +48,14 @@ function App() {
 	const [gottenBal, setgottenBal] = useState(0);
 	const [status, setstatus] = useState(false);
 	const [smShow, setSmShow] = useState(false);
+	const [smShow2, setSmShow2] = useState(false);
+	const [smShow3, setSmShow3] = useState(false);
 
 
 	const handleMintAmount = (e) => {
 		setmintAmount(e.target.value)
 	}
 
-	// if(window.location.reload()){
-	// 	setShow(false)
-	// }
 
 	const loadBlockchainData = async () => {
 		// Fetch Contract, Data, etc.
@@ -70,14 +69,6 @@ function App() {
 			}
 			
 			try {
-
-				// const accounts = await web3.eth.getAccounts()
-	
-				// if (accounts.length > 0) {
-				// 	setAccount(accounts[0])
-				// } else {
-				// 	setMessage('Please connect with MetaMask')
-				// }
 
 			
 				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0xD78254Cff78377aAe3f1Ae3605a1472Cb126b356")
@@ -224,37 +215,22 @@ function App() {
 			if(error){
 				setIsMinting(true)
 				setShow(true)
-				
-				//console.log(isMinting, "wghy")
 			}
 		
 		}
-	 	//console.log(verified, "verified")
-
-		// if(verified == false){
-		// 	window.alert("You are not eligible for presale")
-		// }
-
-		// return verified;
+	 	
 		
 	}
 	
 	const mintNFTHandler = async () => {
-		// console.log(!web3Handler())
-		
-		// if(!web3Handler()){
-		// 	web3Handler()
-		// 	window.alert("Connect your Metamask")
-		// }
 
 		if (nftContract) {
 			// setIsMinting(true)
+			 
 			// setIsError(false)
-			console.log(account, "2")
 			const status =	await nftContract.methods.isVerified(account).call()
 			//console.log(isPresale,"status", status)
 			if(status == false && isPresale == true ){
-				console.log(account, "3")
 				setSmShow(true)
 				await verify(account) 
 				setSmShow(false)
@@ -271,16 +247,19 @@ function App() {
 			}
 
 			
-			
+				setSmShow2(true)
 				await nftContract.methods.mint(mintAmount).send({ from: account, value: totalweiCost})
 					.on('confirmation', async () => {
+						setSmShow2(false)
+						setSmShow3(true)
 						const totalMinted = await nftContract.methods.totalMinted().call()
 					})
 					.on('error', (error) => {
 						window.alert(error)
 						setIsError(true)
-				})
-
+						setSmShow2(false)
+					})
+				
 				if(isPresale == true){
 					const preSaleMax =	await nftContract.methods.preSaleMaxMintAmount(account).call()
 					const presaleMint = await nftContract.methods.presaleMinted(account).call()
@@ -315,30 +294,41 @@ function App() {
 
 	return (
 		<div>
-			<Navbar className='header' bg="" expand="lg">
-  				<Container fluid>
-					<Navbar.Brand href="#home">
-					<img
-						src={logo}
-						width="138"
-						height=""
-						className="d-inline-block align-top"
-						alt="astrogem logo"
-					/>
-					</Navbar.Brand>
-					{account ? (
-					<a
-						href={`https://etherscan.io/address/${account}`}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="button nav-button btn-sm mx-4">
-						{account.slice(0, 5) + '...' + account.slice(38, 42)}
+			<div className='header-top'>
+				<div className="split-content header-left">
+					<a href="index.html" className="brand-logo w-nav-brand">
+						<div className="div-block-2"><img src={logo} alt="astrogems logo" className="header-logo laptop mobile"/></div>
 					</a>
-				) : (
+				</div>
+			</div>
+			<div className="container-header home-header">
+				<div className="split-content header-left tablet">
+					<a href="index.html" className="brand-logo w-nav-brand">
+						<div className="div-block-2"><img src={logo} alt="astrogems logo" className="header-logo"/></div>
+					</a>
+				</div>
+        		<ol className="header-navigation mobile home">
+          			<li className="header-nav-item">
+            			<a href="index.html" className="nav-link footer">Fusions</a>
+         			</li>
+          			<li className="header-nav-item">
+            			<a href="astrogems.html" className="nav-link footer ag">astroGems</a>
+          			</li>
+        		</ol>
+        		<div className="div-block-4">
+					{account ? (
+						<a
+							href={`https://etherscan.io/address/${account}`}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="button nav-button btn-sm mx-4">
+							{account.slice(0, 5) + '...' + account.slice(38, 42)}
+						</a>
+					) : (
 					<button onClick={web3Handler} className="header-btn"> Connect MetaMask</button>
-				)}
-				</Container>
-			</Navbar>
+					)}
+        		</div>
+      		</div>
 			<main>
 			<Modal
 				size="sm"
@@ -353,43 +343,42 @@ function App() {
 				</Modal.Header>
 				<Modal.Body>...</Modal.Body>
 			</Modal>
-				<Row className='container-fluid fusion-div'>
-					<Col md={12} lg={6}>
-						<div>
-							<img className='image-about-me' src={Fusion} alt='fusion'></img>
-						</div>
-					</Col>
-					<Col md={12} lg={6
-					}>
-						<h2>The Fusion</h2>
-						<p className="paragraph-large">8000 unique NFTs crafted with a blend of 3D and 2 Layers of AI.</p>
-						<ul className='list-gradient-container'>
-							<div className="list-item-gradient">
-								<div><strong>Mint </strong>0.04 ETH</div>
-							</div>
-							<div className='list-item-gradient'>
-								<div><strong>Whitelist Mint - </strong>Monday Jan. 6</div>
-							</div>
-							<div className='list-item-gradient'>
-								<div><strong>Public Sale - </strong>Saturday Jan. 8</div>
-							</div>
-						</ul>
-						<div className="mg-top-48px">
-							<div className="button-container ">
-								<a href="#mint" className="button-primary w-button">Mint</a>
-							</div>
-						</div>
-					</Col>
-				</Row>
+			<Modal
+				size="sm"
+				show={smShow2}
+				onHide={() => setSmShow2(false)}
+				aria-labelledby="example-modal-sizes-title-sm"
+			>
+				<Modal.Header closeButton>
+				<Modal.Title id="example-modal-sizes-title-sm">
+						Minting....
+				</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>...</Modal.Body>
+			</Modal>
+			<Modal
+				size="sm"
+				show={smShow3}
+				onHide={() => setSmShow3(false)}
+				aria-labelledby="example-modal-sizes-title-sm"
+			>
+				<Modal.Header closeButton>
+				<Modal.Title id="example-modal-sizes-title-sm">
+						<p className='text-success'>Minting succesful</p>
+				</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>...</Modal.Body>
+			</Modal>
 				<Row className='mint-div'>
 					<MDBAnimation  reveal type="fadeInRight" duration="3s">
 					<Col md={12} lg={12} sm={12}>
 						<div className='mg-top-48px'>
 							<h2 id="mint" className="mint-page">Mint</h2>
             				<h5 >Pre-Sale: LIVE</h5>
-							<h5>Public Sale:Sat. January 8th</h5>
+							<h5>Whitelist Mint - Jan.12 -13</h5>
+							<h5>Public Sale:Fri. January 14th</h5>
 							<h5>0.04 ETH</h5>
-							<div className="w-form"> 
+							<div className="w-form">
 								<form id="wf-form-Mint-Quantity" name="wf-form-Mint-Quantity" data-name="Mint Quantity" method="get">
 									<input type="number" placeholder="MintAmount" onChange={handleMintAmount}></input>
 								</form>
@@ -430,51 +419,32 @@ function App() {
 					)}
 				</Row>
 				</Row>
-				<Row className='footer-div'>
-					<Col md={12} lg={4}>
-						<div className='footer-img-container'>
-							<Image className='footer-img' fluid src={smallLogo} width='100px' sizes="(max-width: 479px) 67px, 70px"></Image>
-						</div>
-					</Col>
-					<Col md={12} lg={4}>
-						<div className='footer-nav'>
-							<div>
-								<a href="index.html" className="nav-link footer">Mint</a>
-							</div>
-							<div>
-								<a href="https://nfttemplate.webflow.io/#about" className="nav-link footer">Fusion</a>
-							</div>
-							<div>
-								<a href="https://nfttemplate.webflow.io/#about" className="nav-link footer">Genesis</a>
-							</div>
-							<div>
-								<a href="https://nfttemplate.webflow.io/#about" className="nav-link footer">Charter</a>
-							</div>
-							<div>
-								<a href="https://nfttemplate.webflow.io/#about" className="nav-link footer">Team</a>
-							</div>
-						</div>
-					</Col>
-					<Col md={12} lg={4}>
-						<div className='footer-right'>
-							<div className='social-link'>
-								<a href='#'><BsTwitter /></a>
-							</div>
-							<div className='social-link'>
-								<a href='#'><BsInstagram /></a>
-							</div>
-							<div className='social-link'>
-								<a href='#'><BsLinkedin /></a>
-							</div>
-							<div className='social-link'>
-								<a href='#'><BsYoutube /></a>
-							</div>
-							<div className='social-link'>
-								<a href='#'><BsWhatsapp /></a>
-							</div>
-						</div>
-					</Col>
-				</Row>
+				<footer className='footer'>
+				<div className="container-default">
+        <div className="footer-top">
+          <div className="footer-top-left">
+            <a href="index.html" className="footer-logo-container w-inline-block"><img src={logo} alt="" className="footer-logo"/></a>
+          </div>
+          <div>
+            <ul className="list-social-media">
+              <li className="list-item-social-media">
+                <a href="https://twitter.com/astrogems1000" className="social-media-icon"><BsTwitter/></a>
+              </li>
+              <li className="list-item-social-media">
+                <a href="https://www.instagram.com/astrogemsnft" className="social-media-icon"><BsInstagram /></a>
+              </li>
+              <li className="list-item-social-media">
+                <a href="https://discord.gg/cuanRJM2Bb" target="_blank" className="link-block w-inline-block" rel="noreferrer"><img src={discordIcon} loading="lazy" width="20" alt="" className="image-7"/></a>
+              </li>
+              <li className="list-item-social-media _2">
+                <a href="https://opensea.io/collection/astrogems" target="_blank" className="link-block w-inline-block" rel="noreferrer"><img src={OpenseaIcon} loading="lazy" width="20" alt="" className="image-9"/></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bottom"></div>
+      </div>
+	  </footer>
 			</main>
 		</div>
 	)
