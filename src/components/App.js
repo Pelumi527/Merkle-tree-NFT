@@ -79,7 +79,7 @@ function App() {
 				// }
 
 			
-				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0x02DCF53A5da78437b3d60A22F7D6d1133b150786")
+				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0xD78254Cff78377aAe3f1Ae3605a1472Cb126b356")
 				setNftContract(THEONFT)
 
 				const mintprice= await nftContract.methods.price().call()	
