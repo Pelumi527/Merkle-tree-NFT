@@ -131,6 +131,7 @@ function App() {
 					const maxMint = await nftContract.methods.maxMintable(account).call()
 					setbalance(maxMint)
 					setgottenBal(maxPublic - maxMint)
+					isAllowedtoMint(maxPublic)
 				}
 
 				if(isPresale == true && status == false ){
