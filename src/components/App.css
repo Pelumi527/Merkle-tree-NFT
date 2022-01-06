@@ -676,6 +676,11 @@ a:hover {
     .list-item-social-media._2 {
       display: none;
     }
+
+    #lightbox img{
+      max-width: 123px;
+      max-height: 123px;
+    }
   
   }
 

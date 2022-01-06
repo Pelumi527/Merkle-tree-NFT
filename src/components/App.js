@@ -17,6 +17,9 @@ import TheoNFT from '../abis/TheoNFT.json';
 import CONFIG from '../config.json';
 import { Row, Col, Alert, Modal,Spinner } from 'react-bootstrap';
 import {MDBAnimation} from 'mdbreact';
+// @ts-ignore
+import Lightboxes from './lightbox';
+
 
 
 function App() {
@@ -282,6 +285,7 @@ function App() {
 		// setIsMinting(false)
 	};
 
+	
 	useEffect(() => {
 		loadBlockchainData()
 		//console.log("you")
@@ -292,6 +296,8 @@ function App() {
 		console.log("mee")
 		
 	}, [account]);
+
+	
 
 	return (
 		<div>
@@ -379,9 +385,10 @@ function App() {
 					<Col md={12} lg={12} sm={12}>
 						<div className='mg-top-48px'>
 							<h2 id="mint" className="mint-page">Mint</h2>
-            				<h5 >Pre-Sale: LIVE</h5>
-							<h5>Whitelist Mint - Jan.12 -13</h5>
-							<h5>Public Sale:Fri. January 14th</h5>
+            				<h5 >Presale: LIVE</h5>
+							<h5>Whitelist Mint: 
+								Jan. 12 -13</h5>
+							<h5>Public Sale: January 14th</h5>
 							<h5>0.04 ETH</h5>
 							<div className="w-form">
 								<form id="wf-form-Mint-Quantity" name="wf-form-Mint-Quantity" data-name="Mint Quantity" method="get">
@@ -424,6 +431,7 @@ function App() {
 					)}
 				</Row>
 				</Row>
+				<Lightboxes />
 				<footer className='footer'>
 				<div className="container-default">
         <div className="footer-top">

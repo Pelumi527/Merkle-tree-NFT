@@ -4,6 +4,7 @@
   "description": "An Ethereum Marketplace",
   "author": "gregory@dappuniversity.com",
   "dependencies": {
+    "@jalik/react-lightbox": "^1.0.12",
     "@openzeppelin/contracts": "^4.3.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -29,6 +30,7 @@
     "react-countdown": "^2.3.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
+    "react-lightbox-pack": "^0.1.5",
     "react-scripts": "4.0.3",
     "truffle": "^5.4.13",
     "web-vitals": "^1.1.2",
