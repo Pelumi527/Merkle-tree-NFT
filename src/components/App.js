@@ -387,8 +387,8 @@ function App() {
 							<h2 id="mint" className="mint-page">Mint</h2>
             				<h5 >Presale: LIVE</h5>
 							<h5>Whitelist Mint: 
-								Jan. 12 -13</h5>
-							<h5>Public Sale: January 14th</h5>
+								January 12 -13</h5>
+							<h5>Public Sale: January 14</h5>
 							<h5>0.04 ETH</h5>
 							<div className="w-form">
 								<form id="wf-form-Mint-Quantity" name="wf-form-Mint-Quantity" data-name="Mint Quantity" method="get">
