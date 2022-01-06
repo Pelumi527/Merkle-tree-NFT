@@ -71,7 +71,7 @@ function App() {
 			try {
 
 			
-				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0xD78254Cff78377aAe3f1Ae3605a1472Cb126b356")
+				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0x0AbC8040546Af7A6E8733a0882a5F3a1da611f0D")
 				setNftContract(THEONFT)
 
 				const mintprice= await nftContract.methods.price().call()	
@@ -210,9 +210,10 @@ function App() {
 		//console.log(ans)
 		//console.log(ans.proof, ans.leaf, ans.max)
 		try {
-			const verified = await nftContract.methods.verification(ans.proof, ans.leaf, ans.max).send({from: account})
+			const verified = await nftContract.methods.verification(ans.proof,ans.max).send({from: account})
 		} catch (error) {
 			if(error){
+				console.log(error)
 				setIsMinting(true)
 				setShow(true)
 			}
@@ -229,7 +230,7 @@ function App() {
 			 
 			// setIsError(false)
 			const status =	await nftContract.methods.isVerified(account).call()
-			//console.log(isPresale,"status", status)
+			console.log(isPresale,"status", status)
 			if(status == false && isPresale == true ){
 				setSmShow(true)
 				await verify(account) 
