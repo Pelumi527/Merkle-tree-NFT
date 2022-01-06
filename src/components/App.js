@@ -255,7 +255,7 @@ function App() {
 						const totalMinted = await nftContract.methods.totalMinted().call()
 					})
 					.on('error', (error) => {
-						window.alert(error)
+						console.log(error)
 						setIsError(true)
 						setSmShow2(false)
 					})
@@ -296,25 +296,25 @@ function App() {
 		<div>
 			<div className='header-top'>
 				<div className="split-content header-left">
-					<a href="index.html" className="brand-logo w-nav-brand">
+					<a href="https://garvenlabs.xyz/" className="brand-logo w-nav-brand">
 						<div className="div-block-2"><img src={logo} alt="astrogems logo" className="header-logo laptop mobile"/></div>
 					</a>
 				</div>
 			</div>
 			<div className="container-header home-header">
 				<div className="split-content header-left tablet">
-					<a href="index.html" className="brand-logo w-nav-brand">
+					<a href="https://garvenlabs.xyz/" className="brand-logo w-nav-brand">
 						<div className="div-block-2"><img src={logo} alt="astrogems logo" className="header-logo"/></div>
 					</a>
 				</div>
-        		<ol className="header-navigation mobile home">
+        		{/* <ol className="header-navigation mobile home">
           			<li className="header-nav-item">
             			<a href="index.html" className="nav-link footer">Fusions</a>
          			</li>
           			<li className="header-nav-item">
             			<a href="astrogems.html" className="nav-link footer ag">astroGems</a>
           			</li>
-        		</ol>
+        		</ol> */}
         		<div className="div-block-4">
 					{account ? (
 						<a
@@ -427,7 +427,7 @@ function App() {
 				<div className="container-default">
         <div className="footer-top">
           <div className="footer-top-left">
-            <a href="index.html" className="footer-logo-container w-inline-block"><img src={logo} alt="" className="footer-logo"/></a>
+            <a href="https://garvenlabs.xyz/" className="footer-logo-container w-inline-block"><img src={logo} alt="" className="footer-logo"/></a>
           </div>
           <div>
             <ul className="list-social-media">
