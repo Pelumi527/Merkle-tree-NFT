@@ -396,7 +396,7 @@ function App() {
 								</form>
 							</div>
 							{balance > 0 ? 
-							<p>{`The connected wallet has ${gottenBal} avaliable`}</p>: account ? <p> { `The connected wallet has ${allowedToMint} avaliable`}</p>:<p></p>}
+							<p>{`The connected wallet has ${gottenBal} available`}</p>: account ? <p> { `The connected wallet has ${allowedToMint} avaliable`}</p>:<p></p>}
 							<div>
 								{account ? <button onClick={mintNFTHandler} className="mint-button"><span>{`Mint for ${mintprice} ETH`}</span></button>:<button onClick={web3Handler} className="header-btn"> Connect MetaMask</button>}
 							</div>
