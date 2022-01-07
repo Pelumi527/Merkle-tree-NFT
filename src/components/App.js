@@ -405,7 +405,7 @@ function App() {
 								<Alert.Heading>Oh snap! You Got an error!</Alert.Heading>
 								<p>
 								"You must have an astroGem, Krakenship or rare-crypto-rocket to claim your free mint or you must
-								fvg sign the transaction"
+								sign the transaction"
 								</p>
 							</Alert> </MDBAnimation>: <p></p>}
 							<p>{`${totalMinted}/${totalSupply} Minted`}</p>
