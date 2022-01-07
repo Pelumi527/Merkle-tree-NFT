@@ -1230,7 +1230,7 @@ export const addresses = [
         "max": " 4"
     },
     {
-        "address":0x5f8577be43fa17b4a6cf65b54fd57273873da8b,
+        "address":0x5f8577be43fa17b4a6cf65b54fd57273873da8b7,
         "proof": [
             "0x4ad2255f8ea5b3908091945ff9285a92f36f7499538b6d43bd8350b4692fafe5",
             "0x43bf41de44dd5139ad27f5e2936eabb4899343f0891d0809f3a55777bf63b609",
