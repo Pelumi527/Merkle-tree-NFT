@@ -390,13 +390,15 @@ function App() {
 								January 12 -13</h5>
 							<h5>Public Sale: January 14</h5>
 							<h5>0.04 ETH</h5>
+							{balance > 0 ? 
+							<p>{`The connected wallet has ${gottenBal} available`}</p>: account ? <p> { `The connected wallet has ${allowedToMint} available`}</p>:<p></p>}
 							<div className="w-form">
 								<form id="wf-form-Mint-Quantity" name="wf-form-Mint-Quantity" data-name="Mint Quantity" method="get">
-									<input type="number" placeholder="MintAmount" onChange={handleMintAmount}></input>
+									<input type="number" placeholder="0" onChange={handleMintAmount}></input>
 								</form>
+								<p>Quantity to mint</p>
 							</div>
-							{balance > 0 ? 
-							<p>{`The connected wallet has ${gottenBal} available`}</p>: account ? <p> { `The connected wallet has ${allowedToMint} avaliable`}</p>:<p></p>}
+							
 							<div>
 								{account ? <button onClick={mintNFTHandler} className="mint-button"><span>{`Mint for ${mintprice} ETH`}</span></button>:<button onClick={web3Handler} className="header-btn"> Connect MetaMask</button>}
 							</div>
