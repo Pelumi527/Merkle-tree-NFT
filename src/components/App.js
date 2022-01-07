@@ -402,7 +402,7 @@ function App() {
 							</div>
 							{show ?<MDBAnimation reveal type="slide-in-down" duration="3s"> <Alert variant="danger" onClose={() => setShow(false)} dismissible>
 								
-								<Alert.Heading>Oh snap! You Got an error!</Alert.Heading>
+								<Alert.Heading>Attention</Alert.Heading>
 								<p>
 								"You must have an astroGem, Krakenship or rare-crypto-rocket to claim your free mint or you must
 								sign the transaction"

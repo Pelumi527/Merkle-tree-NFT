@@ -1095,7 +1095,7 @@ export const addresses = [
         "max": "3"
     },
     {
-        "address":0xe44f69f089dfd831095adcb1ec76d5a0a88922a,
+        "address":0xe44f69f089dfd831095adcb1ec76d5a0a88922ac,
         "proof": [
             "0x5938bde997d4f25d9cb965f445d9c9bd09cffb1f38df609cf9c62cde163a579d",
             "0xdb938953048a6023484d125cd16dd65a23f53b186062194d8ba50a2432ad01f8",
@@ -1110,7 +1110,7 @@ export const addresses = [
         "max": "22"
     },
     {
-        "address":0x3becf83939f34311b6bee143197872d877501b1,
+        "address":0x3becf83939f34311b6bee143197872d877501b11,
         "proof": [
             "0x8ce9ecfe11ec119230df78418b5b1b1e17c752b1a977460bea69f7daa0ada625",
             "0x2d167e04d47bd4cedd14dd62b749022dc7d8b19b1154cf45a3321804c54749ec",
@@ -1125,7 +1125,7 @@ export const addresses = [
         "max": "2"
     },
     {
-        "address":0x716e3e2f4e29877c0a5691f5409e577ce37ffea,
+        "address":0x716e3e2f4e29877c0a5691f5409e577ce37ffeaa,
         "proof": [
             "0xe1caed9ee4953f5969218546d7109cae7928796b5a43f7ac71d51fbbce68d540",
             "0x2d167e04d47bd4cedd14dd62b749022dc7d8b19b1154cf45a3321804c54749ec",
@@ -1140,7 +1140,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address":0xf26cc9a801342c743e6147424349bbbfe3e7f6a,
+        "address":0xf26cc9a801342c743e6147424349bbbfe3e7f6a6,
         "proof": [
             "0x251870b16c7f9da2e3f605d761f1bea339653f57951062d33c190bf1c261942a",
             "0xfa34b69a0b96f95287b330f2664fcb81c344a6071af3ca083ca8657baa818090",
@@ -1155,7 +1155,7 @@ export const addresses = [
         "max": "3"
     },
     {
-        "address":0xebe88a48c476ad3fd6846905592c9ecfaa06bfc,
+        "address":0xebe88a48c476ad3fd6846905592c9ecfaa06bfc4,
         "proof": [
             "0x62e811253d735181958a7e4b9431d382606b74ff7bf95a341dc79024b26cb867",
             "0xfa34b69a0b96f95287b330f2664fcb81c344a6071af3ca083ca8657baa818090",
@@ -1170,7 +1170,7 @@ export const addresses = [
         "max": "2"
     },
     {
-        "address":0xfaa564bd3b28de75880892438f0898cf35c88e4,
+        "address":0xfaa564bd3b28de75880892438f0898cf35c88e4b,
         "proof": [
             "0xadb4e320225dcaed873b436f36b2db63c01d429c01429915a7d6e03fa569d1a6",
             "0x44adaad6d64cbf4e2106f055838914ef8ee0cf60bd0382b2aec4c0550cb021a5",
@@ -1185,7 +1185,7 @@ export const addresses = [
         "max": "8"
     },
     {
-        "address":0x7541eba47caee5a3acecc74bc0287151eaa5efa,
+        "address":0x7541eba47caee5a3acecc74bc0287151eaa5efaa,
         "proof": [
             "0x8f9f5a7eb316b60d54eda61213cf855f00e051eb3b38c375f783d8681d6638ad",
             "0x44adaad6d64cbf4e2106f055838914ef8ee0cf60bd0382b2aec4c0550cb021a5",
@@ -1200,7 +1200,7 @@ export const addresses = [
         "max": "2"
     },
     {
-        "address":0xdb1b17df118584e5a5459edd05a2bba00f75a91,
+        "address":0xdb1b17df118584e5a5459edd05a2bba00f75a915,
         "proof": [
             "0x76c2c04777684e613586c58cf46a3748f17f0efc04072af6de0e54e08fd73026",
             "0xca99c7141ae3f0413ee9b391df5290a35a131700df6ed64b80f39a14171d9dc6",
@@ -1215,7 +1215,7 @@ export const addresses = [
         "max": "2"
     },
     {
-        "address":0x5fe8a15dbe1863b37f7e15b1b180af762754873,
+        "address":0x5fe8a15dbe1863b37f7e15b1b180af7627548738,
         "proof": [
             "0xf06d2085fe3f6d3d1f4252341daadabed9f7e556c3f0432927a7ec92f492c527",
             "0xca99c7141ae3f0413ee9b391df5290a35a131700df6ed64b80f39a14171d9dc6",
@@ -1245,7 +1245,7 @@ export const addresses = [
         "max": "1"
     },
     {
-        "address":0x9279dd7316110f9cc42296c3101020ef704f443,
+        "address":0x9279dd7316110f9cc42296c3101020ef704f443b,
         "proof": [
             "0x5b3aa3ed9c49d2254263d619d7f35678e487c2124c33f5f4f09e1a9e4963a1af",
             "0x43bf41de44dd5139ad27f5e2936eabb4899343f0891d0809f3a55777bf63b609",
@@ -1260,7 +1260,7 @@ export const addresses = [
         "max": "14"
     },
     {
-        "address":0xc585d35fb8c9d136d6443a30fd88ccbb5f4cb86,
+        "address":0xc585d35fb8c9d136d6443a30fd88ccbb5f4cb86d,
         "proof": [
             "0x12bf1abb5c122feaa8dbe3458929df9e9e66b81e00a6e5cd20d5f3406460fd1b",
             "0x9c7ee9c00a90e635a8aa8eff03cd9bc1b07ba6d7082f1e8c9592de55077a7682",
@@ -7522,4 +7522,6 @@ export const addresses = [
         "max": "2"
     }
 ]
+
+
 
