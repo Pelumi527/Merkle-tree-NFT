@@ -762,7 +762,7 @@ export const addresses = [
             "0xa60e84de8ead6d6f2924ef609c461254f44dbcb132ff1d9f0fa6528ed3acb16b",
             "0xaf41837107b2621a236acde489e8eacb0ccc3f0b66f0ace50a6dd86694386dba"
         ],
-        "max": " 7"
+        "max": " 8"
     },
     {
         "address": 0xc6c3a1ef063d7c87c8944780b044b2191d0de899,
@@ -1407,7 +1407,7 @@ export const addresses = [
             "0xa60e84de8ead6d6f2924ef609c461254f44dbcb132ff1d9f0fa6528ed3acb16b",
             "0xaf41837107b2621a236acde489e8eacb0ccc3f0b66f0ace50a6dd86694386dba"
         ],
-        "max": " 2"
+        "max": " 3"
     },
     {
         "address": 0xc63b0d887ed0335699354db687c5fa0b37cb0d96,
@@ -2187,7 +2187,7 @@ export const addresses = [
             "0xa2eb248295223038892e29f62a005f1c05b310f75aafd73890792198294dc198",
             "0xaf41837107b2621a236acde489e8eacb0ccc3f0b66f0ace50a6dd86694386dba"
         ],
-        "max": " 2"
+        "max": "3"
     },
     {
         "address": 0x209458cc8b65a3a1189e87a41d4d1395777e484a,
@@ -3702,7 +3702,7 @@ export const addresses = [
             "0xa2eb248295223038892e29f62a005f1c05b310f75aafd73890792198294dc198",
             "0xaf41837107b2621a236acde489e8eacb0ccc3f0b66f0ace50a6dd86694386dba"
         ],
-        "max": " 12"
+        "max": " 13"
     },
     {
         "address": 0x2c63b48ef7971f835eecefcf9677e05eca6799e9,
@@ -3732,7 +3732,7 @@ export const addresses = [
             "0xa2eb248295223038892e29f62a005f1c05b310f75aafd73890792198294dc198",
             "0xaf41837107b2621a236acde489e8eacb0ccc3f0b66f0ace50a6dd86694386dba"
         ],
-        "max": " 3"
+        "max": "5"
     },
     {
         "address": 0x86a41524cb61edd8b115a72ad9735f8068996688,
@@ -6387,7 +6387,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": " 65"
+        "max": " 127"
     },
     {
         "address": 0x679d5162bad71990abca0f18095948c12a2756b0,
@@ -6987,7 +6987,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "3"
+        "max": "4"
     },
     {
         "address": 0x41246a417c123ec0da4eaef2f309fe1796e7e69d,
@@ -7122,7 +7122,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0x19a857ce267adc1d8e428e36624414910d31ff82,
@@ -7137,7 +7137,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "2"
+        "max": "4"
     },
     {
         "address": 0xbdd95abe8a7694ccd77143376b0fbea183e6a740,
@@ -7152,7 +7152,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0x18120dbbe7ae10c72320d0ab4710b58749d0c1e7,
@@ -7167,7 +7167,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0xadf96052659d0572945f8f50d21b9bd6e661da09,
@@ -7182,7 +7182,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0x9b1f13eddba3c852d6c38bb23441ef4962d18040,
@@ -7197,7 +7197,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0x2baf25bfbb188c22fccefa4fe5a5837e9c822334,
@@ -7212,7 +7212,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0xfec8d31f2e9f552330ff0d4fe9f4f40870b1295a,
@@ -7227,7 +7227,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "4"
     },
     {
         "address": 0xb5c6763d4e737d403897b85cb87d4c077411eb16,
@@ -7242,7 +7242,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0xb6339b84f9902e4bae8f6144048c224d85a18647,
@@ -7257,7 +7257,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0xcff74149d6a1a8a9a01b8a3ba14becf5047320a8,
@@ -7272,7 +7272,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0x6beef2b2fe00fddca12a8cda2d4b00435b0ba3b6,
@@ -7287,7 +7287,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0x294491da597a0e78c250d99c3fb815f32df48e28,
@@ -7302,7 +7302,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0x1e82e222564293e3507c2966b27f587ee2570671,
@@ -7317,7 +7317,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0x49f875c4e6c32ea22a1e715dffac28c0ff402faf,
@@ -7332,7 +7332,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0x0c9e725902f2eeec063c16d253f38684e3192001,
@@ -7347,7 +7347,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "4"
     },
     {
         "address": 0xe52ee356e4320dbc467d72a5e7931c1f24be2912,
@@ -7362,7 +7362,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0x550e970e31a45b06df01a00b1c89a478d4d5e00a,
@@ -7377,7 +7377,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0xe6d8796db42080df3bf047961d9cfb274865066e,
@@ -7392,7 +7392,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0x4f5caa05c9fc9346f24b33cf1c35025a694a383c,
@@ -7407,7 +7407,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0xb8486f271bcd6354f752017bc069440127bb5952,
@@ -7422,7 +7422,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "2"
+        "max": "4"
     },
     {
         "address": 0x4d4937f2e4a79e2d09461f74fd62c05b630d7618,
@@ -7437,7 +7437,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0xa660c3ae1b4a26f51f2527b115f6260eef603851,
@@ -7451,7 +7451,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0x0a2542a170aa02b96b588aa3af8b09ab22a9d7ac,
@@ -7465,7 +7465,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0x38b062df2d8682627e6ebf0d92da0fea744284c9,
@@ -7479,7 +7479,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0xe6a3e90f5fe1c3854586c920e933934c44ba0e8c,
@@ -7493,7 +7493,7 @@ export const addresses = [
             "0x08f90b9963f8656a60b91c24e7675b7c27b0e55350bdcc6b060183c30165a184",
             "0x04bc9f2c343a0452e792bc979c9234f291a250de132e2e7a8f30280fb4cf5ce2"
         ],
-        "max": "1"
+        "max": "2"
     },
     {
         "address": 0xae77719e9997567951bc08e6e42f885798ad4b71,
@@ -7522,3 +7522,4 @@ export const addresses = [
         "max": "2"
     }
 ]
+
