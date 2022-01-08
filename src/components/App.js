@@ -394,7 +394,7 @@ function App() {
 							<p>{`The connected wallet has ${gottenBal} available`}</p>: account ? <p> { `The connected wallet has ${allowedToMint} available`}</p>:<p></p>}
 							<div className="w-form">
 								<form id="wf-form-Mint-Quantity" name="wf-form-Mint-Quantity" data-name="Mint Quantity" method="get">
-									<input value={mintAmount} type="number" placeholder="0" onChange={handleMintAmount}></input>
+									<input type="number" placeholder="1" onChange={handleMintAmount}></input>
 								</form>
 								<p>Quantity to mint</p>
 							</div>
