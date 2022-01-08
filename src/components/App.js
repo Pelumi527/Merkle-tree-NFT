@@ -28,7 +28,7 @@ function App() {
 	const [nftContract, setNftContract] = useState(null);
 	const [totalSupply, setTotalSupply] = useState(0)
 	const [isPresale, setIsPresale] = useState(false);
-	const [mintAmount, setmintAmount] = useState(0);
+	const [mintAmount, setmintAmount] = useState(1);
 
 	const [account, setAccount] = useState(null)
 	const [currentNetwork, setCurrentNetwork] = useState(null)
