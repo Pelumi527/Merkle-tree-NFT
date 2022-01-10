@@ -45,7 +45,7 @@ function App() {
 	const [totalMinted,settotalMinted] = useState(0);
 	const [allowedToMint, isAllowedtoMint] = useState(0)
 	const [show, setShow] = useState(false);
-	const [mintprice, setMintPrice] = useState(0)
+	const [mintprice, setMintPrice] = useState(1)
 	const [check, setcheck] = useState();
 	const [balance, setbalance] = useState(0);
 	const [gottenBal, setgottenBal] = useState(0);
@@ -67,14 +67,14 @@ function App() {
 			const networkId = await web3.eth.net.getId()
 			setCurrentNetwork(networkId)
 
-			if(networkId !== 1) {
+			if(networkId !== 4) {
 				setMessage("Contract not deployed to current network, please change to the ethereum network in MetaMask")
 			}
 			
 			try {
 
 			
-				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0xc40228EB5392Cebe9b42655C1CD6BA53b3658920")
+				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0x0AbC8040546Af7A6E8733a0882a5F3a1da611f0D")
 				setNftContract(THEONFT)
 
 				const mintprice= await nftContract.methods.price().call()	
@@ -387,9 +387,9 @@ function App() {
 							<h2 id="mint" className="mint-page">Mint</h2>
             				<h5 >Presale: LIVE</h5>
 							<h5>Whitelist Mint: 
-								January 12 -13</h5>
-							<h5>Public Sale: January 14</h5>
-							<h5>0.04 ETH</h5>
+								January 14</h5>
+							<h5>Public Sale: January 15</h5>
+							<h5>0.035 ETH</h5>
 							{balance > 0 ? 
 							<p>{`The connected wallet has ${gottenBal} available`}</p>: account ? <p> { `The connected wallet has ${allowedToMint} available`}</p>:<p></p>}
 							<div className="w-form">
