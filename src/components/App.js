@@ -67,14 +67,14 @@ function App() {
 			const networkId = await web3.eth.net.getId()
 			setCurrentNetwork(networkId)
 
-			if(networkId !== 4) {
+			if(networkId !== 1) {
 				setMessage("Contract not deployed to current network, please change to the ethereum network in MetaMask")
 			}
 			
 			try {
 
 			
-				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0x0AbC8040546Af7A6E8733a0882a5F3a1da611f0D")
+				const THEONFT = new web3.eth.Contract(TheoNFT.abi, "0xc40228EB5392Cebe9b42655C1CD6BA53b3658920")
 				setNftContract(THEONFT)
 
 				const mintprice= await nftContract.methods.price().call()	
