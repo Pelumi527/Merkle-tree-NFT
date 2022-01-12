@@ -314,14 +314,7 @@ function App() {
 						<div className="div-block-2"><img src={logo} alt="astrogems logo" className="header-logo"/></div>
 					</a>
 				</div>
-        		{/* <ol className="header-navigation mobile home">
-          			<li className="header-nav-item">
-            			<a href="index.html" className="nav-link footer">Fusions</a>
-         			</li>
-          			<li className="header-nav-item">
-            			<a href="astrogems.html" className="nav-link footer ag">astroGems</a>
-          			</li>
-        		</ol> */}
+        		
         		<div className="div-block-4">
 					{account ? (
 						<a
@@ -387,8 +380,8 @@ function App() {
 							<h2 id="mint" className="mint-page">Mint</h2>
             				<h5 >Presale: LIVE</h5>
 							<h5>Whitelist Mint: 
-								January 14</h5>
-							<h5>Public Sale: January 15</h5>
+								TBA</h5>
+							<h5>Public Sale: TBA</h5>
 							<h5>0.035 ETH</h5>
 							{balance > 0 ? 
 							<p>{`The connected wallet has ${gottenBal} available`}</p>: account ? <p> { `The connected wallet has ${allowedToMint} available`}</p>:<p></p>}
