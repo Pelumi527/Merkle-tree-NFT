@@ -378,11 +378,11 @@ function App() {
 					<Col md={12} lg={12} sm={12}>
 						<div className='mg-top-48px'>
 							<h2 id="mint" className="mint-page">Mint</h2>
-            				<h5 >Presale: LIVE</h5>
+            				{/* <h5 >Presale: LIVE</h5> */}
 							<h5>Whitelist Mint: 
-								TBA</h5>
-							<h5>Public Sale: TBA</h5>
-							<h5>0.035 ETH</h5>
+								FEB 11</h5>
+							<h5>Public Sale: FEB 12</h5>
+							<h5>Price: Free to Mint</h5>
 							{balance > 0 ? 
 							<p>{`The connected wallet has ${gottenBal} available`}</p>: account ? <p> { `The connected wallet has ${allowedToMint} available`}</p>:<p></p>}
 							<div className="w-form">
@@ -403,7 +403,7 @@ function App() {
 								sign the transaction"
 								</p>
 							</Alert> </MDBAnimation>: <p></p>}
-							<p>{`${totalMinted}/${totalSupply} Minted`}</p>
+							<p>{`${totalMinted}/${7000} Minted`}</p>
 						</div>
 					</Col>
 					</MDBAnimation>
