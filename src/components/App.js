@@ -379,9 +379,9 @@ function App() {
 						<div className='mg-top-48px'>
 							<h2 id="mint" className="mint-page">Mint</h2>
             				{/* <h5 >Presale: LIVE</h5> */}
-							<h5>Whitelist Mint: 
-								FEB 11</h5>
-							<h5>Public Sale: FEB 12</h5>
+							{/* <h5>Whitelist Mint: 
+								FEB 11</h5> */}
+							<h5>Public Sale: LIVE</h5>
 							<h5>Price: Free to Mint</h5>
 							{balance > 0 ? 
 							<p>{`The connected wallet has ${gottenBal} available`}</p>: account ? <p> { `The connected wallet has ${allowedToMint} available`}</p>:<p></p>}
@@ -395,7 +395,8 @@ function App() {
 							<div>
 								{account ? <button onClick={mintNFTHandler} className="mint-button"><span>{`Mint for ${mintprice} ETH`}</span></button>:<button onClick={web3Handler} className="header-btn"> Connect MetaMask</button>}
 							</div>
-							{show ?<MDBAnimation reveal type="slide-in-down" duration="3s"> <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+							{show ?<MDBAnimation reveal typ
+							e="slide-in-down" duration="3s"> <Alert variant="danger" onClose={() => setShow(false)} dismissible>
 								
 								<Alert.Heading>Attention</Alert.Heading>
 								<p>
